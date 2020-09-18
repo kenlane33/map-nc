@@ -1,5 +1,5 @@
 import React from "react"
-import {stringToColor} from './../helpers/colorGen'
+import {stringToColor, stringToGrey} from './../helpers/colorGen'
 
 export default function StateMap( props ) {
   const stl = {fill:'#d0d0d0',strokeWidth:'.17829',stroke:'blue'}
@@ -10,7 +10,7 @@ export default function StateMap( props ) {
       <g id="counties" transform="translate(-3850 -2640) rotate(10) scale(5.8)" style={stl}>
         {props.counties.map( x=>{
           const displayNm = x.name + ', ' + stateNm
-          const countyColor = stringToColor(displayNm+'x')
+          const countyColor = stringToGrey(displayNm+'x') //stringToColor(displayNm+'x')
           const stlC = {fill:countyColor}
           return (
             <path
