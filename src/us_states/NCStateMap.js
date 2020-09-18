@@ -5,7 +5,7 @@ import counties from './NC_svg_data'
 export default function NCStateMap() {  
   return (
     <div>
-      <StateMap counties={counties} />
+      <StateMap counties={counties} stateNm='NC'/>
     </div>
   )
 }
