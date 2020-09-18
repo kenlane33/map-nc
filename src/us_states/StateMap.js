@@ -1,5 +1,5 @@
 import React from "react"
-import {hashStrToGrey, scoreToColor, stringToColor, stringToGrey} from './../helpers/colorGen'
+import {changeLumInHslStr, hashStrToGrey, scoreToColor, stringToColor, stringToGrey} from './../helpers/colorGen'
 
 const overrideMaybe = (key, lookup, defaultVal) => {
   return ( Object.keys(lookup).includes( key ) ) ? lookup[key] : defaultVal
@@ -19,7 +19,7 @@ export default function StateMap( props ) {
     Robeson:scoreToColor( rndScore() ),
     Wake:scoreToColor( rndScore() ),
   }
-  const highlights = {Onslow:'red'}
+  const highlights = {Wake:changeLumInHslStr(fills['Wake'], '30%')}
   return (
     <svg viewBox="0 0 989.98 627.07" version="1.0">
       {props.children}
@@ -30,7 +30,7 @@ export default function StateMap( props ) {
           const countyColor = hashStrToGrey(x.name)
           const fillCol = overrideMaybe( x.name, fills, countyColor )//( Object.keys(countyScores).includes( x.name ) ) ? countyScores[x.name] : countyColor
           const strokeCol = overrideMaybe( x.name, highlights, 'black' )
-          const strokeWidth = (strokeCol==='black') ? '' : '1'
+          const strokeWidth = (strokeCol==='black') ? '' : '1.4'
           const stlC = {fill:fillCol, stroke:strokeCol, strokeWidth: strokeWidth}
           return (
             <path
