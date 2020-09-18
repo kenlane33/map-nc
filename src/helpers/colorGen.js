@@ -64,10 +64,10 @@ export const randColor=()=>Math.floor(Math.random()*16777215).toString(16)
 
 export const changeLumInHslStr = ( hslStr, percent ) => {
 
-  console.log(hslStr)
+  //console.log(hslStr)
   const regexp = /hsl\(\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?%)\s*,\s*(\d+(?:\.\d+)?%)\)/g
   const res = regexp.exec(hslStr)
   if (res==null) return hslStr;
-  console.log(res)
+  //console.log(res)
   return `hsl(${res[1]},${res[2]},${percent})`
 }
