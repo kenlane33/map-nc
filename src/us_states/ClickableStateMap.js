@@ -7,6 +7,7 @@ export default function ClickableStateMap( props ) {
   const {counties, stateNm, fills, allowed} = props
   const [highCounty, setHighCounty] = useState('Wake')
   const [msg, setMsg] = useState(null)
+  const [clickOffTimeout, setClickOffTimeout] = useState(null)
 
   const doClickOkCounty = (cnty)=> {
     setHighCounty(cnty)
@@ -15,7 +16,8 @@ export default function ClickableStateMap( props ) {
 
   const doClickOffCounty = (cnty) => {
     setMsg( `Data for ${cnty}, ${stateNm} is not available just yet`)
-    setTimeout( ()=>{setMsg(null)}, 2000)
+    if (clickOffTimeout) clearTimeout( clickOffTimeout )
+    setClickOffTimeout( setTimeout( ()=>{setMsg(null)}, 2000) )
   }
   return (
     <div>
