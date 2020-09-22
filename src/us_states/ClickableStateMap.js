@@ -9,7 +9,8 @@ export default function ClickableStateMap( props ) {
     counties, 
     stateName, 
     fillColors, 
-    allowedCounties
+    allowedCounties,
+    doPickedCounty
   } = props
   
   const [highCounty, setHighCounty] = useState('Wake')
@@ -19,6 +20,7 @@ export default function ClickableStateMap( props ) {
   const doClickAllowedCounty = (cnty)=> {
     setHighCounty(cnty)
     console.log(cnty)
+    if (doPickedCounty) doPickedCounty(cnty) // callback to parent if passed in
   }
 
   const doClickDisabledCounty = (cnty) => {

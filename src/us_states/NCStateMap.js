@@ -17,6 +17,7 @@ export default function NCStateMap() {
     Wake: rndScoreColor(), 
   }
   const allowedCounties = Object.keys( fillColors )
+  const pickedOne = (cNm)=> console.log( cNm + ' County, NC')
   return (
     <div>
       <ClickableStateMap 
@@ -24,6 +25,7 @@ export default function NCStateMap() {
         stateName='NC'
         fillColors={fillColors}
         allowedCounties={allowedCounties}
+        doPickedCounty={pickedOne}
         />
     </div>
   )
