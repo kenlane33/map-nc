@@ -58,7 +58,7 @@ export default function StateMap( props ) {
   const isHighlighted = (x)=> Object.keys(highlights).includes(x.name)
   let countiesWithHighlightsLast = [...counties]
   countiesWithHighlightsLast.sort( (x)=> (isHighlighted(x)) ? 1 : -1 )
-  console.log(countiesWithHighlightsLast[countiesWithHighlightsLast.length-1].name)
+  //console.log(countiesWithHighlightsLast[countiesWithHighlightsLast.length-1].name)
 
   return (
     <svg viewBox="0 0 989.98 380" version="1.0">
