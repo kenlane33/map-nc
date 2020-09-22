@@ -1,30 +1,26 @@
 import React from "react"
 
-const PickCounty = (props)=>{
+const OnePickCountyBtn = (x, props)=>{
   const {
-    allowedCounties, 
     picked, 
     doClick
   } = props
+  const klass = 'pick-county-btn ' + ((x===picked) ? ' highlighted' : '')
   return (
-    <div>
-      {allowedCounties.map( x => { 
-        const stl = {
-          background:(x===picked)?'#44e':'#eee',
-          color:(x===picked)?'white':'black',
-        }
-        return (
-          <span key={x}>
-          <span 
-            className="pick-county-btn"
-            style={stl}
-            onClick={()=>doClick(x)}
-          >
-            {x}
-          </span>
-          {' '}
-          </span>
-        )
+    <span key={x}>
+      <span className={klass} onClick={()=>doClick(x)}>
+        {x}
+      </span>
+      {' '}
+    </span>
+  )
+}
+
+const PickCounty = ( props )=>{
+  return (
+    <div className="pick-county-div">
+      {props.allowedCounties.map( (x)=>{ 
+        return OnePickCountyBtn( x, props )
       })}
     </div>
   )

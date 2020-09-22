@@ -28,7 +28,9 @@ export default function ClickableStateMap( props ) {
   }
   return (
     <div>
-      {highCounty} County
+      <div className="clickable-state-map-county-label">
+        {highCounty} County
+      </div>
       <StateMap 
         counties={counties} 
         stateName={stateName}
