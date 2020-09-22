@@ -1,11 +1,17 @@
 import React from "react"
 
-const PickCounty = ({allowed, picked, doClick}) => {
+const PickCounty = (props)=>{
+  const {
+    allowedCounties, 
+    picked, 
+    doClick
+  } = props
   return (
     <div>
-      {allowed.map( x => { 
+      {allowedCounties.map( x => { 
         const stl = {
-          background:(x===picked)?'#99e':'#eee',
+          background:(x===picked)?'#44e':'#eee',
+          color:(x===picked)?'white':'black',
         }
         return (
           <span key={x}>
