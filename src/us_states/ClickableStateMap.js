@@ -10,7 +10,8 @@ export default function ClickableStateMap( props ) {
     stateName, 
     fillColors, 
     allowedCounties,
-    doPickedCounty
+    doPickedCounty,
+    viewBox
   } = props
   
   const [highCounty, setHighCounty] = useState('Wake')
@@ -41,6 +42,7 @@ export default function ClickableStateMap( props ) {
         doClickDisabledCounty={doClickDisabledCounty}
         fillColors={fillColors}
         allowedCounties={allowedCounties}
+        viewBox={viewBox}
         />
         <PickCounty
           allowedCounties={allowedCounties}

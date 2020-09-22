@@ -51,22 +51,23 @@ export default function StateMap( props ) {
   const {
     highlights, 
     counties,
+    viewBox,
   } = props
   const stl = {fill:'#d0d0d0',strokeWidth:'.17829'}
 
   // Sort so highlighted counties are last and thus drawn on top of other counties
   const isHighlighted = (x)=> Object.keys(highlights).includes(x.name)
-  let countiesWithHighlightsLast = [...counties]
-  countiesWithHighlightsLast.sort( (x)=> (isHighlighted(x)) ? 1 : -1 )
+  const highlightsLast = x=> (isHighlighted(x)) ? 1 : -1
+  let sortedCounties = [...counties]
+  sortedCounties.sort( highlightsLast )
   //console.log('Last:'+countiesWithHighlightsLast[countiesWithHighlightsLast.length-1].name)
 
   return (
-    <svg viewBox="0 0 989.98 380" version="1.0">
-      <g id="counties" 
-        transform="translate(-3850 -2640) rotate(10) scale(5.8)" 
+    <svg viewBox={viewBox.viewBox} version="1.0">
+      <g id="counties" transform={viewBox.transform} 
         style={stl}
       >
-        {countiesWithHighlightsLast.map( (c)=>{
+        {sortedCounties.map( (c)=>{
           return renderOneCounty( c, props )
         })}
       </g>

@@ -1,11 +1,12 @@
 import React from "react"
 import ClickableStateMap from './ClickableStateMap'
-import counties from './NC_svg_data'
 import {scoreToColor} from './../helpers/colorGen'
-
+import {usCounties, stateViewBoxes} from '../data/us_counties'
+// import counties from './NC_svg_data'
+const counties = usCounties['NC']
+const viewBox = stateViewBoxes['NC']
 const rndScore      = ()=>Math.random()
 const rndScoreColor = ()=>scoreToColor( rndScore() )
-
 export default function NCStateMap() {
   const fillColors = { // fills are colors
     Ashe: rndScoreColor(), 
@@ -26,6 +27,7 @@ export default function NCStateMap() {
         fillColors={fillColors}
         allowedCounties={allowedCounties}
         doPickedCounty={pickedOne}
+        viewBox={viewBox}
         />
     </div>
   )
