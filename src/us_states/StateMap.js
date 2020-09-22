@@ -13,7 +13,7 @@ const renderOneCounty = (c, props) => {
     allowedCounties,
     doClickAllowedCounty,
     doClickDisabledCounty, 
-    stateName='<State>',
+    stateName='<State>', // default value <State>
   } = props
   const displayNm = c.name + ', ' + stateName
 
@@ -58,7 +58,7 @@ export default function StateMap( props ) {
   const isHighlighted = (x)=> Object.keys(highlights).includes(x.name)
   let countiesWithHighlightsLast = [...counties]
   countiesWithHighlightsLast.sort( (x)=> (isHighlighted(x)) ? 1 : -1 )
-  //console.log(countiesWithHighlightsLast[countiesWithHighlightsLast.length-1].name)
+  //console.log('Last:'+countiesWithHighlightsLast[countiesWithHighlightsLast.length-1].name)
 
   return (
     <svg viewBox="0 0 989.98 380" version="1.0">
