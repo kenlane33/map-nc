@@ -1,7 +1,7 @@
 {
-  "name": "map-nc-ue3gb",
+  "name": "react-map-region-picker",
   "version": "1.0.0",
-  "description": "",
+  "description": "React map region picker for USA states and counties",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
