@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 // import {changeLumInHslStr, hashStrToGrey, scoreToColor, stringToColor, stringToGrey} from './../helpers/colorGen'
-import StateMap from './StateMap'
+import StateMapSvg from './StateMapSvg'
 import PickCounty from './PickCounty'
 
 //----------------------/////////----------------------
@@ -11,10 +11,10 @@ export default function ClickableStateMap( props ) {
     fillColors, 
     allowedCounties,
     doPickedCounty,
-    viewBox
+    stateProps
   } = props
   
-  const [highCounty, setHighCounty] = useState('Wake')
+  const [highCounty, setHighCounty] = useState(allowedCounties[0])
   const [msg, setMsg] = useState(null)
   const [clickOffTimeout, setClickOffTimeout] = useState(null)
 
@@ -34,7 +34,7 @@ export default function ClickableStateMap( props ) {
       <div className="clickable-state-map-county-label">
         {highCounty} County
       </div>
-      <StateMap 
+      <StateMapSvg 
         counties={counties} 
         stateName={stateName}
         highlights={{[highCounty]:'#33f'}}
@@ -42,14 +42,14 @@ export default function ClickableStateMap( props ) {
         doClickDisabledCounty={doClickDisabledCounty}
         fillColors={fillColors}
         allowedCounties={allowedCounties}
-        viewBox={viewBox}
-        />
-        <PickCounty
-          allowedCounties={allowedCounties}
-          picked={highCounty}
-          doClick={doClickAllowedCounty}
-        />
-        {msg && <div style={{background:'pink'}}>{msg}</div>}
+        stateProps={stateProps}
+      />
+      <PickCounty
+        allowedCounties={allowedCounties}
+        picked={highCounty}
+        doClick={doClickAllowedCounty}
+      />
+      {msg && <div style={{background:'pink'}}>{msg}</div>}
     </div>
   )
 }
