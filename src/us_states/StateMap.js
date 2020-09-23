@@ -1,7 +1,7 @@
 import React from "react"
 import ClickableStateMap from './ClickableStateMap'
 import {scoreToColor} from './../helpers/colorGen'
-import {usCounties, statesProps} from '../data/us_counties'
+import {countiesByUsaState, usaStatesProps} from '../data/us_counties'
 // import counties from './NC_svg_data'
 const rndScore      = ()=>Math.random()
 const rndScoreColor = ()=>scoreToColor( rndScore() )
@@ -10,8 +10,8 @@ const rndScoreColor = ()=>scoreToColor( rndScore() )
 export default function StateMap(props) {
 
   const {usState} = props
-  const counties = usCounties[usState]
-  const stateProps = statesProps[usState]
+  const counties = countiesByUsaState[usState]()
+  const stateProps = usaStatesProps[usState]
   let fillColors = {}
   stateProps.allowed.forEach( x=> fillColors[x]=rndScoreColor())
   const allowedCounties = stateProps.allowed//Object.keys( fillColors )
