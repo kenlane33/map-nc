@@ -11,7 +11,7 @@ export default function MapRegionPicker( props ) {
     fillColors, 
     enabledParts,
     doPickedPart,
-    stateProps, 
+    regionProps, 
   } = props
   
   const [highCounty, setHighCounty] = useState(enabledParts[enabledParts.length-1])
@@ -40,7 +40,7 @@ export default function MapRegionPicker( props ) {
         highlights={{[highCounty]:'#33f'}}
         fillColors={fillColors}
         enabledParts={enabledParts}
-        stateProps={stateProps}
+        regionProps={regionProps}
         doClickEnabledPart={doClickEnabledPart}
         doClickDisabledPart={doClickDisabledPart}
       />

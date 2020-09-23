@@ -51,7 +51,7 @@ export default function MapRegionSvg( props ) {
   const {
     highlights, 
     parts,
-    stateProps,
+    regionProps,
   } = props
   const stl = {fill:'#d0d0d0',strokeWidth:'.17829'}
 
@@ -63,8 +63,8 @@ export default function MapRegionSvg( props ) {
   //console.log('Last:'+countiesWithHighlightsLast[countiesWithHighlightsLast.length-1].name)
 
   return (
-    <svg viewBox={stateProps.viewBox} version="1.0">
-      <g id="parts" transform={stateProps.transform} 
+    <svg viewBox={regionProps.viewBox} version="1.0">
+      <g id="parts" transform={regionProps.transform} 
         style={stl}
       >
         {sortedParts.map( (c)=>{

@@ -11,10 +11,10 @@ export default function RegionMap(props) {
 
   const {regionName} = props
   const parts = partsByRegion[regionName]()
-  const stateProps = propsByRegion[regionName]
+  const regionProps = propsByRegion[regionName]
   let fillColors = {}
-  stateProps.allowed.forEach( x=> fillColors[x]=rndScoreColor())
-  const enabledParts = stateProps.allowed//Object.keys( fillColors )
+  regionProps.allowed.forEach( x=> fillColors[x]=rndScoreColor())
+  const enabledParts = regionProps.allowed//Object.keys( fillColors )
   const pickedOne = (cNm)=> console.log( cNm + ' County, NC')
 
   return (
@@ -25,7 +25,7 @@ export default function RegionMap(props) {
         fillColors={fillColors}
         enabledParts={enabledParts}
         doPickedPart={pickedOne}
-        stateProps={stateProps}
+        regionProps={regionProps}
         />
     </div>
   )
