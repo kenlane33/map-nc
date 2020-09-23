@@ -7,7 +7,7 @@ export default function App() {
     <div className="App">
       <h1>Hello NC</h1>
       <h2>Lets get healthy!</h2>
-      <StateMap usState="NC"/>
+      <StateMap usaState="NC"/>
     </div>
   );
 }

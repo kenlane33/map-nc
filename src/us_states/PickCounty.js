@@ -19,7 +19,7 @@ const OnePickCountyBtn = (x, props)=>{
 const PickCounty = ( props )=>{
   return (
     <div className="pick-county-div">
-      {props.allowedCounties.map( (x)=>{ 
+      {props.enabledRegions.map( (x)=>{ 
         return OnePickCountyBtn( x, props )
       })}
     </div>

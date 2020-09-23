@@ -10,7 +10,7 @@ const renderOneCounty = (c, props) => {
   const {
     highlights,
     fillColors, 
-    allowedCounties,
+    enabledRegions,
     doClickAllowedCounty,
     doClickDisabledCounty, 
     stateName='<State>', // default value <State>
@@ -25,7 +25,7 @@ const renderOneCounty = (c, props) => {
   const stlC = {fill:fillCol, stroke:strokeCol, strokeWidth: strokeWidth}
 
   // Do the right kind of clicks
-  const isAllowedCounty = (allowedCounties.includes(c.name))
+  const isAllowedCounty = (enabledRegions.includes(c.name))
   const clk = isAllowedCounty ? 
                 ()=>{doClickAllowedCounty(c.name) }  : 
                 ()=>{doClickDisabledCounty(c.name)}
@@ -50,21 +50,21 @@ const renderOneCounty = (c, props) => {
 export default function StateMapSvg( props ) {
   const {
     highlights, 
-    counties,
+    regions,
     stateProps,
   } = props
   const stl = {fill:'#d0d0d0',strokeWidth:'.17829'}
 
-  // Sort so highlighted counties are last and thus drawn on top of other counties
+  // Sort so highlighted regions are last and thus drawn on top of other regions
   const isHighlighted = (x)=> Object.keys(highlights).includes(x.name)
   const highlightsLast = x=> (isHighlighted(x)) ? 1 : -1
-  let sortedCounties = [...counties]
+  let sortedCounties = [...regions]
   sortedCounties.sort( highlightsLast )
   //console.log('Last:'+countiesWithHighlightsLast[countiesWithHighlightsLast.length-1].name)
 
   return (
     <svg viewBox={stateProps.viewBox} version="1.0">
-      <g id="counties" transform={stateProps.transform} 
+      <g id="regions" transform={stateProps.transform} 
         style={stl}
       >
         {sortedCounties.map( (c)=>{

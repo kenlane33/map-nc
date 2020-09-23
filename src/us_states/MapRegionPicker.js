@@ -4,24 +4,24 @@ import StateMapSvg from './StateMapSvg'
 import PickCounty from './PickCounty'
 
 //----------------------/////////----------------------
-export default function ClickableStateMap( props ) {
+export default function MapRegionPicker( props ) {
   const {
-    counties, 
+    regions, 
     stateName, 
     fillColors, 
-    allowedCounties,
-    doPickedCounty,
+    enabledRegions,
+    doPickedRegion,
     stateProps
   } = props
   
-  const [highCounty, setHighCounty] = useState(allowedCounties[0])
+  const [highCounty, setHighCounty] = useState(enabledRegions[0])
   const [msg, setMsg] = useState(null)
   const [clickOffTimeout, setClickOffTimeout] = useState(null)
 
   const doClickAllowedCounty = (cnty)=> {
     setHighCounty(cnty)
     console.log(cnty)
-    if (doPickedCounty) doPickedCounty(cnty) // callback to parent if passed in
+    if (doPickedRegion) doPickedRegion(cnty) // callback to parent if passed in
   }
 
   const doClickDisabledCounty = (cnty) => {
@@ -35,17 +35,17 @@ export default function ClickableStateMap( props ) {
         {highCounty} County
       </div>
       <StateMapSvg 
-        counties={counties} 
+        regions={regions} 
         stateName={stateName}
         highlights={{[highCounty]:'#33f'}}
         fillColors={fillColors}
-        allowedCounties={allowedCounties}
+        enabledRegions={enabledRegions}
         stateProps={stateProps}
         doClickAllowedCounty={doClickAllowedCounty}
         doClickDisabledCounty={doClickDisabledCounty}
       />
       <PickCounty
-        allowedCounties={allowedCounties}
+        enabledRegions={enabledRegions}
         picked={highCounty}
         doClick={doClickAllowedCounty}
       />
