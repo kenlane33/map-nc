@@ -38,11 +38,11 @@ export default function ClickableStateMap( props ) {
         counties={counties} 
         stateName={stateName}
         highlights={{[highCounty]:'#33f'}}
-        doClickAllowedCounty={doClickAllowedCounty}
-        doClickDisabledCounty={doClickDisabledCounty}
         fillColors={fillColors}
         allowedCounties={allowedCounties}
         stateProps={stateProps}
+        doClickAllowedCounty={doClickAllowedCounty}
+        doClickDisabledCounty={doClickDisabledCounty}
       />
       <PickCounty
         allowedCounties={allowedCounties}

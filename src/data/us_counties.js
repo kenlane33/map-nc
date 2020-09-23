@@ -1,4 +1,4 @@
-export const stateViewBoxes = {
+export const statesProps = {
   "NC": {
     viewBox:"0 0 989.98 380", 
     transform:"translate(-3850 -2640) rotate(10) scale(5.8)",
@@ -3360,4 +3360,3 @@ export const usCounties = JSON.parse(`
 ]
 }
 `)
-export default usCounties
