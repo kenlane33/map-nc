@@ -50,7 +50,7 @@ const renderOneCounty = (c, props) => {
 export default function StateMapSvg( props ) {
   const {
     highlights, 
-    regions,
+    subRegions,
     stateProps,
   } = props
   const stl = {fill:'#d0d0d0',strokeWidth:'.17829'}
@@ -58,7 +58,7 @@ export default function StateMapSvg( props ) {
   // Sort so highlighted regions are last and thus drawn on top of other regions
   const isHighlighted = (x)=> Object.keys(highlights).includes(x.name)
   const highlightsLast = x=> (isHighlighted(x)) ? 1 : -1
-  let sortedCounties = [...regions]
+  let sortedCounties = [...subRegions]
   sortedCounties.sort( highlightsLast )
   //console.log('Last:'+countiesWithHighlightsLast[countiesWithHighlightsLast.length-1].name)
 

@@ -7,11 +7,11 @@ const rndScore      = ()=>Math.random()
 const rndScoreColor = ()=>scoreToColor( rndScore() )
 
 //----------------------/////////---------------------
-export default function StateMap(props) {
+export default function RegionMap(props) {
 
-  const {usaState} = props
-  const counties = countiesByUsaState[usaState]()
-  const stateProps = usaStatesProps[usaState]
+  const {regionName} = props
+  const subRegions = countiesByUsaState[regionName]()
+  const stateProps = usaStatesProps[regionName]
   let fillColors = {}
   stateProps.allowed.forEach( x=> fillColors[x]=rndScoreColor())
   const enabledRegions = stateProps.allowed//Object.keys( fillColors )
@@ -20,8 +20,8 @@ export default function StateMap(props) {
   return (
     <div>
       <MapRegionPicker 
-        regions={counties} 
-        stateName={usaState}
+        subRegions={subRegions} 
+        regionName={regionName}
         fillColors={fillColors}
         enabledRegions={enabledRegions}
         doPickedRegion={pickedOne}

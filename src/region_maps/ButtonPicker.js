@@ -1,11 +1,11 @@
 import React from "react"
 
-const OnePickCountyBtn = (x, props)=>{
+const OnePickRegionBtn = (x, props)=>{
   const {
     picked, 
     doClick
   } = props
-  const klass = 'pick-county-btn ' + ((x===picked) ? ' highlighted' : '')
+  const klass = 'pick-region-btn ' + ((x===picked) ? ' highlighted' : '')
   return (
     <span key={x}>
       <span className={klass} onClick={()=>doClick(x)}>
@@ -16,13 +16,13 @@ const OnePickCountyBtn = (x, props)=>{
   )
 }
 
-const PickCounty = ( props )=>{
+const ButtonPicker = ( props )=>{
   return (
-    <div className="pick-county-div">
+    <div className="pick-region-div">
       {props.enabledRegions.map( (x)=>{ 
-        return OnePickCountyBtn( x, props )
+        return OnePickRegionBtn( x, props )
       })}
     </div>
   )
 }
-export default PickCounty
+export default ButtonPicker

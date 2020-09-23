@@ -1,13 +1,13 @@
 import React from "react";
 import "./styles.css";
-import StateMap from "./us_states/StateMap"
+import RegionMap from "./region_maps/RegionMap"
 
 export default function App() {
   return (
     <div className="App">
       <h1>Hello NC</h1>
       <h2>Lets get healthy!</h2>
-      <StateMap usaState="NC"/>
+      <RegionMap regionName="NC"/>
     </div>
   );
 }

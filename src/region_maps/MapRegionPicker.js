@@ -1,20 +1,20 @@
 import React, {useState} from "react"
 // import {changeLumInHslStr, hashStrToGrey, scoreToColor, stringToColor, stringToGrey} from './../helpers/colorGen'
 import StateMapSvg from './StateMapSvg'
-import PickCounty from './PickCounty'
+import ButtonPicker from './ButtonPicker'
 
 //----------------------/////////----------------------
 export default function MapRegionPicker( props ) {
   const {
-    regions, 
-    stateName, 
+    regionName, 
+    subRegions,
     fillColors, 
     enabledRegions,
     doPickedRegion,
-    stateProps
+    stateProps, 
   } = props
   
-  const [highCounty, setHighCounty] = useState(enabledRegions[0])
+  const [highCounty, setHighCounty] = useState(enabledRegions[enabledRegions.length-1])
   const [msg, setMsg] = useState(null)
   const [clickOffTimeout, setClickOffTimeout] = useState(null)
 
@@ -25,7 +25,7 @@ export default function MapRegionPicker( props ) {
   }
 
   const doClickDisabledCounty = (cnty) => {
-    setMsg( `Data for ${cnty}, ${stateName} is not available just yet`)
+    setMsg( `Data for ${cnty}, ${regionName} is not available just yet`)
     if (clickOffTimeout) clearTimeout( clickOffTimeout )
     setClickOffTimeout( setTimeout( ()=>{setMsg(null)}, 2000) )
   }
@@ -35,8 +35,8 @@ export default function MapRegionPicker( props ) {
         {highCounty} County
       </div>
       <StateMapSvg 
-        regions={regions} 
-        stateName={stateName}
+        subRegions={subRegions} 
+        regionName={regionName}
         highlights={{[highCounty]:'#33f'}}
         fillColors={fillColors}
         enabledRegions={enabledRegions}
@@ -44,7 +44,7 @@ export default function MapRegionPicker( props ) {
         doClickAllowedCounty={doClickAllowedCounty}
         doClickDisabledCounty={doClickDisabledCounty}
       />
-      <PickCounty
+      <ButtonPicker
         enabledRegions={enabledRegions}
         picked={highCounty}
         doClick={doClickAllowedCounty}

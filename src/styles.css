@@ -11,11 +11,11 @@
   cursor: pointer;
 }
 
-.pick-county-div {
+.pick-region-div {
   text-align: center;
 }
 
-.pick-county-btn {
+.pick-region-btn {
   margin:6px;
   line-height: 3.0; 
   border-radius: 7px; 
@@ -25,7 +25,7 @@
   background: #eee;
 }
 
-.pick-county-btn.highlighted {
+.pick-region-btn.highlighted {
   background:#44e;
   color:white;
 }
