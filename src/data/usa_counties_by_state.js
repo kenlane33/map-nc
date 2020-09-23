@@ -1,4 +1,3 @@
-
 //-----------///////////////---------------------
 export const propsByRegion = {
   "NC": {
@@ -11,6 +10,11 @@ export const propsByRegion = {
     transform:"translate(-3750 -2830) rotate(10) scale(5.8)",
     allowed:['Aiken', 'Charleston'],
   }
+}
+
+//-----------///////////////---------------------
+export const getPropsByRegion = (regionName)=> {
+  return propsByRegion[regionName]
 }
 
 //-----------///////////////---------------------
