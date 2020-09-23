@@ -19,7 +19,7 @@ const OnePickRegionBtn = (x, props)=>{
 const ButtonPicker = ( props )=>{
   return (
     <div className="pick-region-div">
-      {props.enabledRegions.map( (x)=>{ 
+      {props.enabledParts.map( (x)=>{ 
         return OnePickRegionBtn( x, props )
       })}
     </div>

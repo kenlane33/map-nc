@@ -1,7 +1,7 @@
 import React from "react"
 import MapRegionPicker from './MapRegionPicker'
 import {scoreToColor} from './../helpers/colorGen'
-import {countiesByUsaState, usaStatesProps} from '../data/usa_counties'
+import {partsByRegion, propsByRegion} from '../data/usa_counties_by_state'
 // import counties from './NC_svg_data'
 const rndScore      = ()=>Math.random()
 const rndScoreColor = ()=>scoreToColor( rndScore() )
@@ -10,21 +10,21 @@ const rndScoreColor = ()=>scoreToColor( rndScore() )
 export default function RegionMap(props) {
 
   const {regionName} = props
-  const subRegions = countiesByUsaState[regionName]()
-  const stateProps = usaStatesProps[regionName]
+  const parts = partsByRegion[regionName]()
+  const stateProps = propsByRegion[regionName]
   let fillColors = {}
   stateProps.allowed.forEach( x=> fillColors[x]=rndScoreColor())
-  const enabledRegions = stateProps.allowed//Object.keys( fillColors )
+  const enabledParts = stateProps.allowed//Object.keys( fillColors )
   const pickedOne = (cNm)=> console.log( cNm + ' County, NC')
 
   return (
     <div>
       <MapRegionPicker 
-        subRegions={subRegions} 
+        parts={parts} 
         regionName={regionName}
         fillColors={fillColors}
-        enabledRegions={enabledRegions}
-        doPickedRegion={pickedOne}
+        enabledParts={enabledParts}
+        doPickedPart={pickedOne}
         stateProps={stateProps}
         />
     </div>

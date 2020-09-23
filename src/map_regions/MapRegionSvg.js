@@ -6,16 +6,16 @@ const overrideMaybe = (key, lookup, defaultVal) => {
   return ( Object.keys(lookup).includes( key ) ) ? lookup[key] : defaultVal
 }
 //----////////////////----------------------------------
-const renderOneCounty = (c, props) => {
+const renderOnePart = (c, props) => {
   const {
     highlights,
     fillColors, 
-    enabledRegions,
-    doClickAllowedCounty,
-    doClickDisabledCounty, 
-    stateName='<State>', // default value <State>
+    enabledParts,
+    doClickEnabledPart,
+    doClickDisabledPart, 
+    regionName='<State>', // default value <State>
   } = props
-  const displayNm = c.name + ', ' + stateName
+  const displayNm = c.name + ', ' + regionName
 
   // Fill & stroke Colors for a county
   const countyCol = hashStrToGrey(c.name)
@@ -25,10 +25,10 @@ const renderOneCounty = (c, props) => {
   const stlC = {fill:fillCol, stroke:strokeCol, strokeWidth: strokeWidth}
 
   // Do the right kind of clicks
-  const isAllowedCounty = (enabledRegions.includes(c.name))
+  const isAllowedCounty = (enabledParts.includes(c.name))
   const clk = isAllowedCounty ? 
-                ()=>{doClickAllowedCounty(c.name) }  : 
-                ()=>{doClickDisabledCounty(c.name)}
+                ()=>{doClickEnabledPart(c.name) }  : 
+                ()=>{doClickDisabledPart(c.name)}
   return (
        <path
          className='svg-path'
@@ -47,10 +47,10 @@ const renderOneCounty = (c, props) => {
 }
 
 //----------------------/////////----------------------
-export default function StateMapSvg( props ) {
+export default function MapRegionSvg( props ) {
   const {
     highlights, 
-    subRegions,
+    parts,
     stateProps,
   } = props
   const stl = {fill:'#d0d0d0',strokeWidth:'.17829'}
@@ -58,17 +58,17 @@ export default function StateMapSvg( props ) {
   // Sort so highlighted regions are last and thus drawn on top of other regions
   const isHighlighted = (x)=> Object.keys(highlights).includes(x.name)
   const highlightsLast = x=> (isHighlighted(x)) ? 1 : -1
-  let sortedCounties = [...subRegions]
-  sortedCounties.sort( highlightsLast )
+  let sortedParts = [...parts]
+  sortedParts.sort( highlightsLast )
   //console.log('Last:'+countiesWithHighlightsLast[countiesWithHighlightsLast.length-1].name)
 
   return (
     <svg viewBox={stateProps.viewBox} version="1.0">
-      <g id="regions" transform={stateProps.transform} 
+      <g id="parts" transform={stateProps.transform} 
         style={stl}
       >
-        {sortedCounties.map( (c)=>{
-          return renderOneCounty( c, props )
+        {sortedParts.map( (c)=>{
+          return renderOnePart( c, props )
         })}
       </g>
     </svg>

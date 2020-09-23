@@ -1,30 +1,30 @@
 import React, {useState} from "react"
 // import {changeLumInHslStr, hashStrToGrey, scoreToColor, stringToColor, stringToGrey} from './../helpers/colorGen'
-import StateMapSvg from './StateMapSvg'
+import MapRegionSvg from './MapRegionSvg'
 import ButtonPicker from './ButtonPicker'
 
 //----------------------/////////----------------------
 export default function MapRegionPicker( props ) {
   const {
     regionName, 
-    subRegions,
+    parts,
     fillColors, 
-    enabledRegions,
-    doPickedRegion,
+    enabledParts,
+    doPickedPart,
     stateProps, 
   } = props
   
-  const [highCounty, setHighCounty] = useState(enabledRegions[enabledRegions.length-1])
+  const [highCounty, setHighCounty] = useState(enabledParts[enabledParts.length-1])
   const [msg, setMsg] = useState(null)
   const [clickOffTimeout, setClickOffTimeout] = useState(null)
 
-  const doClickAllowedCounty = (cnty)=> {
+  const doClickEnabledPart = (cnty)=> {
     setHighCounty(cnty)
     console.log(cnty)
-    if (doPickedRegion) doPickedRegion(cnty) // callback to parent if passed in
+    if (doPickedPart) doPickedPart(cnty) // callback to parent if passed in
   }
 
-  const doClickDisabledCounty = (cnty) => {
+  const doClickDisabledPart = (cnty) => {
     setMsg( `Data for ${cnty}, ${regionName} is not available just yet`)
     if (clickOffTimeout) clearTimeout( clickOffTimeout )
     setClickOffTimeout( setTimeout( ()=>{setMsg(null)}, 2000) )
@@ -34,20 +34,20 @@ export default function MapRegionPicker( props ) {
       <div className="clickable-state-map-county-label">
         {highCounty} County
       </div>
-      <StateMapSvg 
-        subRegions={subRegions} 
+      <MapRegionSvg 
+        parts={parts} 
         regionName={regionName}
         highlights={{[highCounty]:'#33f'}}
         fillColors={fillColors}
-        enabledRegions={enabledRegions}
+        enabledParts={enabledParts}
         stateProps={stateProps}
-        doClickAllowedCounty={doClickAllowedCounty}
-        doClickDisabledCounty={doClickDisabledCounty}
+        doClickEnabledPart={doClickEnabledPart}
+        doClickDisabledPart={doClickDisabledPart}
       />
       <ButtonPicker
-        enabledRegions={enabledRegions}
+        enabledParts={enabledParts}
         picked={highCounty}
-        doClick={doClickAllowedCounty}
+        doClick={doClickEnabledPart}
       />
       {msg && <div style={{background:'pink'}}>{msg}</div>}
     </div>
