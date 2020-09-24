@@ -9,7 +9,7 @@ const rndScore      = ()=>Math.random()
 const rndScoreColor = ()=>scoreToColor( rndScore() )
 
 //----------------------/////////---------------------
-export default function RegionMap(props) {
+export default function MapRegion(props) {
 
   const {regionName} = props
   const parts = partsByRegion[regionName]()

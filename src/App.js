@@ -5,7 +5,7 @@ import MapRegion from "./map_regions/MapRegion"
 export default function App() {
   return (
     <div className="App">
-      <MapRegion regionName="NC"/>
+      <MapRegion regionName="SC"/>
     </div>
   );
 }

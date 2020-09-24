@@ -67,8 +67,12 @@ export default function MapRegionSvg( props ) {
       <g id="parts" transform={regionProps.transform} 
         style={stl}
       >
-        {sortedParts.map( (c)=>{
-          return renderOnePart( c, props )
+        {sortedParts.map( (p)=>{
+          if (Array.isArray(p.d)) {
+            return <g>{p.d.map(x=>renderOnePart( p, props ))}</g>
+          } else {
+            return (renderOnePart( p, props ) )
+          }
         })}
       </g>
     </svg>
