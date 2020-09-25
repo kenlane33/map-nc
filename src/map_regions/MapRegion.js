@@ -16,6 +16,7 @@ export default function MapRegion(props) {
     partWordFn,
     doPick,
     initialPart,
+    buttonFn,
     regionData:{
       partsByRegion, 
       propsByRegion, 
@@ -49,6 +50,7 @@ export default function MapRegion(props) {
         partWordFn={partWordFn}
         partAbbreviations={partAbbreviations}
         initialPart={initialPart}
+        buttonFn={buttonFn}
         />
     </div>
   )

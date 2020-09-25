@@ -12,6 +12,7 @@ export default function MapRegionPicker( props ) {
     partWordFn,
     partAbbreviations,
     initialPart,
+    buttonFn
   } = props
 
   const firstPart = initialPart || ((enabledParts.length>0) ? enabledParts[enabledParts.length-1] : '')
@@ -55,10 +56,12 @@ export default function MapRegionPicker( props ) {
         doClickDisabledPart={doClickDisabledPart}
       />
       <ButtonPicker
+        regionName={regionName}
         enabledParts={enabledParts}
         picked={pickedPart}
         doClick={doClickEnabledPart}
         abbreviations={partAbbreviations}
+        buttonFn={buttonFn}
       />
       {msg && <div style={{background:'pink'}}>{msg}</div>}
     </div>

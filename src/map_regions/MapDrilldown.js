@@ -43,15 +43,17 @@ export default function MapDrilldown(props) {
           onClick={()=>backClk(picks[currLevel])}
           style={{display:'inline'}}
         >
-          {'<'}Back
+          {'<'}Back 
         </button>
       }
+      {mapLevel.icon}
       <MapRegion 
         regionName={picks[currLevel]}
         regionData={mapLevel.region}
         partWordFn={mapLevel.wordFn}
         doPick={pickClk}
         initialPart={initPart}
+        buttonFn={mapLevel.buttonFn}
       />
       <hr/>
     </div>
