@@ -7,8 +7,15 @@
   text-align: center;
 }
 
+.svg-path {
+  stroke-width:'.17829';
+  stroke: black;
+}
+
 .svg-path:hover {
   cursor: pointer;
+  stroke: green;
+  stroke-width: 2;
 }
 
 .pick-region-div {

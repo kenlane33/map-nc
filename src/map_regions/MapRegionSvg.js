@@ -1,12 +1,12 @@
 import React from "react"
 import {hashStrToGrey} from './../helpers/colorGen'
 //import {changeLumInHslStr, hashStrToGrey, scoreToColor, stringToColor, stringToGrey} from './../helpers/colorGen'
-
+const el = React.createElement
 const overrideMaybe = (key, lookup, defaultVal) => {
   return ( Object.keys(lookup).includes( key ) ) ? lookup[key] : defaultVal
 }
 //----////////////////----------------------------------
-const renderOnePart = (c, props) => {
+const renderOnePart = (part, props, i) => {
   const {
     highlights,
     fillColors, 
@@ -15,26 +15,35 @@ const renderOnePart = (c, props) => {
     doClickDisabledPart, 
     regionName='<State>', // default value <State>
   } = props
-  const displayNm = c.name + ', ' + regionName
+  const displayNm = part.name + ', ' + regionName
 
   // Fill & stroke Colors for a county
-  const countyCol = hashStrToGrey(c.name)
-  const fillCol = overrideMaybe( c.name, fillColors, countyCol )//( Object.keys(countyScores).includes( x.name ) ) ? countyScores[x.name] : countyColor
-  const strokeCol = overrideMaybe( c.name, highlights, 'black' )
+  const partCol = hashStrToGrey(part.name)
+  const fillCol = overrideMaybe( part.name, fillColors, partCol )//( Object.keys(countyScores).includes( x.name ) ) ? countyScores[x.name] : countyColor
+  const strokeCol = overrideMaybe( part.name, highlights, 'black' )
   const strokeWidth = (strokeCol==='black') ? '' : '1.4'
   const stlC = {fill:fillCol, stroke:strokeCol, strokeWidth: strokeWidth}
 
   // Do the right kind of clicks
-  const isAllowedCounty = (enabledParts.includes(c.name))
+  const isAllowedCounty = (enabledParts.includes(part.name))
   const clk = isAllowedCounty ? 
-                ()=>{doClickEnabledPart(c.name) }  : 
-                ()=>{doClickDisabledPart(c.name)}
+                ()=>{doClickEnabledPart(part.name) }  : 
+                ()=>{doClickDisabledPart(part.name)}
+  if (part.tag) {return (el(
+    part.tag,
+    {...part,
+      key:part.id + i,
+      onClick:clk, 
+      style:{fill:fillCol}, 
+      className:'svg-path part-border'
+  }))}
+  else
   return (
        <path
          className='svg-path'
-         key={c.id}
-         id={c.id}
-         d={c.d}
+         key={part.id + i}
+         id={part.id}
+         d={part.d}
          style={stlC}
          onClick={clk}
        >
@@ -52,6 +61,7 @@ export default function MapRegionSvg( props ) {
     highlights, 
     parts,
     regionProps,
+    fillColors,
   } = props
   const stl = {fill:'#d0d0d0',strokeWidth:'.17829'}
 
@@ -67,12 +77,18 @@ export default function MapRegionSvg( props ) {
       <g id="parts" transform={regionProps.transform} 
         style={stl}
       >
-        {sortedParts.map( (p)=>{
+        {sortedParts.map( (p,i)=>{
+
+          if (p.tag) {
+            const fillCol = overrideMaybe( p.name, fillColors, 'grey' )//( Object.keys(countyScores).includes( x.name ) ) ? countyScores[x.name] : countyColor
+            return el(p.tag,{...p, style:{fill:fillCol}, className:'svg-path part-border'})
+          } else
           if (Array.isArray(p.d)) {
-            return <g>{p.d.map(x=>renderOnePart( p, props ))}</g>
+            return <g key={p.name+i}>{p.d.map((x,j)=>renderOnePart( p, props, j ))}</g>
           } else {
-            return (renderOnePart( p, props ) )
+            return (renderOnePart( p, props, i ) )
           }
+
         })}
       </g>
     </svg>

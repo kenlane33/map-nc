@@ -11,10 +11,13 @@ export default function MapRegionPicker( props ) {
     fillColors, 
     enabledParts,
     doPickedPart,
-    regionProps, 
+    regionProps,
+    partWordFn,
+    partAbbreviations,
   } = props
   
-  const [highCounty, setHighCounty] = useState(enabledParts[enabledParts.length-1])
+  const lastIdx = (enabledParts.length>0) ? enabledParts[enabledParts.length-1] : -1
+  const [highCounty, setHighCounty] = useState(lastIdx)
   const [msg, setMsg] = useState(null)
   const [clickOffTimeout, setClickOffTimeout] = useState(null)
 
@@ -29,18 +32,22 @@ export default function MapRegionPicker( props ) {
     if (clickOffTimeout) clearTimeout( clickOffTimeout )
     setClickOffTimeout( setTimeout( ()=>{setMsg(null)}, 2000) )
   }
+  const partFullName = (partAbbreviations && partAbbreviations[highCounty]) || highCounty;
+  const partWords    = (partWordFn) ? partWordFn(partFullName) : partFullName
+
   return (
     <div>
       <div className="clickable-state-map-county-label">
-        {highCounty} County
+        {partWords}
       </div>
       <MapRegionSvg 
-        parts={parts} 
-        regionName={regionName}
         highlights={{[highCounty]:'#33f'}}
-        fillColors={fillColors}
-        enabledParts={enabledParts}
-        regionProps={regionProps}
+        {...props}
+        // parts={parts} 
+        // regionName={regionName}
+        // fillColors={fillColors}
+        // enabledParts={enabledParts}
+        // regionProps={regionProps}
         doClickEnabledPart={doClickEnabledPart}
         doClickDisabledPart={doClickDisabledPart}
       />

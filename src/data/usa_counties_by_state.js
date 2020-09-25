@@ -3634,3 +3634,6 @@ export const partsByRegion =
 },
 
 }
+const regionData = {propsByRegion, regionAbbreviations, partsByRegion}
+// const regionData = {propsByRegion: propsByRegion, regionAbbreviations:regionAbbreviations, partsByRegion:partsByRegion}
+export default regionData;
