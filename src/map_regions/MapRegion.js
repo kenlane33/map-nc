@@ -15,6 +15,7 @@ export default function MapRegion(props) {
     regionName, 
     partWordFn,
     doPick,
+    initialPart,
     regionData:{
       partsByRegion, 
       propsByRegion, 
@@ -26,19 +27,20 @@ export default function MapRegion(props) {
   const regionProps = getPropsByRegion(regionName, propsByRegion, partsByRegion)
   let fillColors = {}
   const partNames = Object.values(parts).map(x=>x.name)
-  const enabledParts = regionProps.allowed || partNames//Object.keys( fillColors )
+  const enabledParts = regionProps.allowed || partNames // if null, allow all
   enabledParts.forEach( x=> fillColors[x]=rndScoreColor())
   // else partNames.forEach( x=> fillColors[x]=rndScoreColor())
   const doPickedPart = (nm)=> {
     doPick(nm)
-    console.log( partWordFn(nm) )
+    console.log( `doPickedPart(${partWordFn(nm, regionName)})` )
   }
 
   return (
     <div>
       {/* <span>Hello {regionAbbreviations[regionName] || regionName}</span> */}
-      <MapRegionPicker 
-        parts={parts} usa_state
+      <MapRegionPicker
+        parts={parts}
+        key={regionName}
         regionName={regionName}
         fillColors={fillColors}
         enabledParts={enabledParts}
@@ -46,6 +48,7 @@ export default function MapRegion(props) {
         regionProps={regionProps}
         partWordFn={partWordFn}
         partAbbreviations={partAbbreviations}
+        initialPart={initialPart}
         />
     </div>
   )

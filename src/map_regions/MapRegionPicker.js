@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 // import {changeLumInHslStr, hashStrToGrey, scoreToColor, stringToColor, stringToGrey} from './../helpers/colorGen'
 import MapRegionSvg from './MapRegionSvg'
 import ButtonPicker from './ButtonPicker'
@@ -11,16 +11,22 @@ export default function MapRegionPicker( props ) {
     doPickedPart,
     partWordFn,
     partAbbreviations,
+    initialPart,
   } = props
-  
-  const lastIdx = (enabledParts.length>0) ? enabledParts[enabledParts.length-1] : -1
-  const [pickedPart, setPickedPart] = useState(lastIdx)
+
+  const [pickedPart, setPickedPart] = useState(initialPart)
+  useEffect(()=>{ // runs once on init
+    const firstPart = initialPart || ((enabledParts.length>0) ? enabledParts[enabledParts.length-1] : '')
+    setPickedPart(firstPart)
+    //console.log(`initialPart:${initialPart}, firstPart:${firstPart}, pickedPart:${pickedPart}`)
+  },[])
+
   const [msg, setMsg] = useState(null)
   const [clickOffTimeout, setClickOffTimeout] = useState(null)
 
   const doClickEnabledPart = (clickedPart)=> {
     setPickedPart(clickedPart)
-    console.log(clickedPart)
+    console.log(`doClickEnabledPart(${partWordFn(clickedPart, regionName)})`)
     if (doPickedPart) doPickedPart(clickedPart) // callback to parent if passed in
   }
 

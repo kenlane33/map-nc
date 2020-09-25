@@ -1,12 +1,20 @@
 import React, {useState} from "react"
 import MapRegion from './MapRegion'
 
+const modArray = ( arr, idx, val, setter ) => {
+  let newPicks = [...arr]
+  newPicks[idx] = val
+  setter( newPicks )
+  console.log(`----[${newPicks}] --> ${newPicks[idx]}`)
+}
+
 //----------------------/////////---------------------
 export default function MapDrilldown(props) {
   const {mapLevels} = props
   const [currLevel, setCurrLevel] = useState(1)
   const [picks, setPicks] = useState(mapLevels.map(x=>x.picked))
-  console.log(`picks ${picks} ${picks[currLevel]}`)
+  const [initPart, setInitPart] = useState(null)
+  //console.log(`picks ${picks} ${picks[currLevel]}`)
   
   const clamp = (v, lo, hi) => Math.max( Math.min( v, hi ), lo ) 
 
@@ -15,15 +23,16 @@ export default function MapDrilldown(props) {
 
     const newI = clamp( currLevel+1, 0, mapLevels.length )
     setCurrLevel( newI )
-
-    let newPicks = [...picks]
-    newPicks[newI] = x
-    setPicks( newPicks )
-
-    console.log('----'+newPicks)
+    setInitPart(null)
+    modArray( picks, newI, x, setPicks )
   }
-  const backClk = x=>{
-    setCurrLevel( clamp( currLevel - 1, 0, picks.length ) )
+  
+  const backClk = (priorRegion)=>{
+    const newI = clamp( currLevel - 1, 0, mapLevels.length )
+    setCurrLevel( newI )
+    //modArray( picks, newI, x, setPicks )
+    console.log(`priorRegion:${priorRegion}`)
+    setInitPart(priorRegion)
   }
   
   const mapLevel = mapLevels[currLevel]
@@ -31,7 +40,7 @@ export default function MapDrilldown(props) {
     <div>
       { (currLevel>0) && 
         <button 
-          onClick={backClk}
+          onClick={()=>backClk(picks[currLevel])}
           style={{display:'inline'}}
         >
           {'<'}Back
@@ -42,6 +51,7 @@ export default function MapDrilldown(props) {
         regionData={mapLevel.region}
         partWordFn={mapLevel.wordFn}
         doPick={pickClk}
+        initialPart={initPart}
       />
       <hr/>
     </div>
