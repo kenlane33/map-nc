@@ -14,10 +14,10 @@ export default function MapRegionPicker( props ) {
     initialPart,
   } = props
 
-  const [pickedPart, setPickedPart] = useState(initialPart)
+  const firstPart = initialPart || ((enabledParts.length>0) ? enabledParts[enabledParts.length-1] : '')
+  const [pickedPart, setPickedPart] = useState(firstPart)
   useEffect(()=>{ // runs once on init
-    const firstPart = initialPart || ((enabledParts.length>0) ? enabledParts[enabledParts.length-1] : '')
-    setPickedPart(firstPart)
+    // setPickedPart(firstPart)
     //console.log(`initialPart:${initialPart}, firstPart:${firstPart}, pickedPart:${pickedPart}`)
   },[])
 
