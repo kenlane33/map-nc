@@ -7,15 +7,16 @@
   text-align: center;
 }
 
-.svg-path {
+.map-part-border {
   stroke-width:'.17829';
   stroke: black;
 }
 
-.svg-path:hover {
+.map-part-border:hover {
   cursor: pointer;
-  stroke: green;
+  stroke: black;
   stroke-width: 2;
+  z-index: 6000;
 }
 
 .pick-region-div {

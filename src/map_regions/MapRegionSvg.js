@@ -14,14 +14,17 @@ const renderOnePart = (part, props, i) => {
     doClickEnabledPart,
     doClickDisabledPart, 
     regionName='<State>', // default value <State>
+    regionProps
   } = props
   const displayNm = part.name + ', ' + regionName
 
   // Fill & stroke Colors for a county
   const partCol = hashStrToGrey(part.name)
   const fillCol = overrideMaybe( part.name, fillColors, partCol )//( Object.keys(countyScores).includes( x.name ) ) ? countyScores[x.name] : countyColor
-  const strokeCol = overrideMaybe( part.name, highlights, 'black' )
-  const strokeWidth = (strokeCol==='black') ? '' : '1.4'
+  const strokeCol = overrideMaybe( part.name, highlights, null )
+  //const strokeWidth = (strokeCol==='black') ? '' : '1.4'
+  const osw = regionProps.highlightStrokeWidth && regionProps.highlightStrokeWidth
+  const strokeWidth = (strokeCol) ? (osw||'1.4') : ''
   const stlC = {fill:fillCol, stroke:strokeCol, strokeWidth: strokeWidth}
 
   // Do the right kind of clicks
@@ -29,18 +32,21 @@ const renderOnePart = (part, props, i) => {
   const clk = isAllowedCounty ? 
                 ()=>{doClickEnabledPart(part.name) }  : 
                 ()=>{doClickDisabledPart(part.name)}
+  const elAttrs = {
+    className: 'svg-path map-part-border',
+    key: `${part.tag} ${part.id} ${i}`,
+    id: part.id,
+    style: stlC, 
+    onClick: clk, 
+  }
   if (part.tag) {return (el(
     part.tag,
-    {...part,
-      key:part.id + i,
-      onClick:clk, 
-      style:{fill:fillCol}, 
-      className:'svg-path part-border'
-  }))}
+    {...part, ...elAttrs}
+  ))}
   else
   return (
        <path
-         className='svg-path'
+         className='svg-path map-part-border'
          key={part.id + i}
          id={part.id}
          d={part.d}
@@ -61,7 +67,6 @@ export default function MapRegionSvg( props ) {
     highlights, 
     parts,
     regionProps,
-    fillColors,
   } = props
   const stl = {fill:'#d0d0d0',strokeWidth:'.17829'}
 
@@ -79,14 +84,14 @@ export default function MapRegionSvg( props ) {
       >
         {sortedParts.map( (p,i)=>{
 
-          if (p.tag) {
-            const fillCol = overrideMaybe( p.name, fillColors, 'grey' )//( Object.keys(countyScores).includes( x.name ) ) ? countyScores[x.name] : countyColor
-            return el(p.tag,{...p, style:{fill:fillCol}, className:'svg-path part-border'})
-          } else
-          if (Array.isArray(p.d)) {
-            return <g key={p.name+i}>{p.d.map((x,j)=>renderOnePart( p, props, j ))}</g>
+          if (! Array.isArray(p.d)) {
+            return renderOnePart( p, props, i )
           } else {
-            return (renderOnePart( p, props, i ) )
+            return (
+              <g key={'g'+p.name+i}>
+                {p.d.map((x,j)=>renderOnePart( p, props, j ))}
+              </g>
+            )
           }
 
         })}

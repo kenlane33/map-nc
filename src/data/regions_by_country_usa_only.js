@@ -3,6 +3,7 @@ export const propsByRegion = {
     viewBox:"0 0 590 370", 
     transform:"translate(0 0.1) scale(1)",
     allowed: null,
+    highlightStrokeWidth: 5,
   }
 }
 //-----------////////////////////---------------------
