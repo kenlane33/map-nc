@@ -30,7 +30,7 @@ export default function MapRegionPicker( props ) {
     setClickOffTimeout( setTimeout( ()=>{setMsg(null)}, 2000) )
   }
   const partFullName = (partAbbreviations && partAbbreviations[pickedPart]) || pickedPart;
-  const partWords    = (partWordFn) ? partWordFn(partFullName) : partFullName
+  const partWords    = (partWordFn) ? partWordFn(partFullName, regionName) : `${partFullName}, ${regionName}`
 
   return (
     <div>
@@ -52,6 +52,7 @@ export default function MapRegionPicker( props ) {
         enabledParts={enabledParts}
         picked={pickedPart}
         doClick={doClickEnabledPart}
+        abbreviations={partAbbreviations}
       />
       {msg && <div style={{background:'pink'}}>{msg}</div>}
     </div>

@@ -9,8 +9,16 @@ export default function MapUsaStateCounties(props) {
   return (
     <MapDrilldown 
       mapLevels={[
-        {region: regionDataCountries, picked:'USA'}, 
-        {region: regionDataStates, picked:'NC'}
+        {
+          region: regionDataCountries, 
+          picked:'USA',
+          wordFn: (p,r)=>`${p}, ${r}`,
+        }, 
+        {
+          region: regionDataStates, 
+          picked:'NC',
+          wordFn: (p,r)=>`${p} County, ${r}`,
+        }
       ]}
     />
   )
