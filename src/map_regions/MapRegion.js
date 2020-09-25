@@ -36,7 +36,7 @@ export default function MapRegion(props) {
 
   return (
     <div>
-      <h1>Hello {regionAbbreviations[regionName] || regionName}</h1>
+      <span>Hello {regionAbbreviations[regionName] || regionName}</span>
       <MapRegionPicker 
         parts={parts} usa_state
         regionName={regionName}

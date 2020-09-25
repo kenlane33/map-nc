@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import MapRegion from './MapRegion'
 
 //----------------------/////////---------------------
-export default function MapTree(props) {
+export default function MapDrilldown(props) {
   const {mapLevels} = props
   const [currLevel, setCurrLevel] = useState(0)
   const [picks, setPicks] = useState(mapLevels.map(x=>x.picked))
