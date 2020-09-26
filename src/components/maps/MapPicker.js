@@ -12,7 +12,8 @@ export default function MapPicker( props ) {
     partWordFn,
     partAbbreviations,
     initialPart,
-    buttonTextFn
+    buttonTextFn,
+    fillColorOfPartFn
   } = props
 
   const firstPart = initialPart || ((enabledParts.length>0) ? enabledParts[enabledParts.length-1] : '')
@@ -50,6 +51,7 @@ export default function MapPicker( props ) {
       <MapRegionSvg 
         {...props}
         highlights={{[pickedPart]:'#33f'}}
+        fillColorOfPartFn={fillColorOfPartFn}
         doClickEnabledPart={doClickEnabledPart}
         doClickDisabledPart={doClickDisabledPart}
       />

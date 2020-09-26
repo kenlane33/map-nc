@@ -9,7 +9,7 @@ const overrideMaybe = (key, lookup, defaultVal) => {
 const renderOnePart = (part, props, i) => {
   const {
     highlights,
-    fillColors, 
+    fillColorOfPartFn,
     enabledParts,
     doClickEnabledPart,
     doClickDisabledPart, 
@@ -19,13 +19,13 @@ const renderOnePart = (part, props, i) => {
   const displayNm = part.name + ', ' + regionName
 
   // Fill & stroke Colors for a county
-  const partCol = hashStrToGrey(part.name)
-  const fillCol = overrideMaybe( part.name, fillColors, partCol )//( Object.keys(countyScores).includes( x.name ) ) ? countyScores[x.name] : countyColor
+  const partCol = fillColorOfPartFn(part.name,enabledParts)//hashStrToGrey(part.name)
+  // const fillCol = overrideMaybe( part.name, fillColors, partCol )//( Object.keys(countyScores).includes( x.name ) ) ? countyScores[x.name] : countyColor
   const strokeCol = overrideMaybe( part.name, highlights, null )
   //const strokeWidth = (strokeCol==='black') ? '' : '1.4'
   const osw = regionProps.highlightStrokeWidth && regionProps.highlightStrokeWidth
   const strokeWidth = (strokeCol) ? (osw||'1.4') : ''
-  const stlC = {fill:fillCol, stroke:strokeCol, strokeWidth: strokeWidth}
+  const stlC = {fill:partCol, stroke:strokeCol, strokeWidth: strokeWidth}
 
   // Do the right kind of clicks
   const isAllowedCounty = (enabledParts.includes(part.name))

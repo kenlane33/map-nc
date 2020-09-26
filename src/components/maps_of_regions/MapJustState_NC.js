@@ -1,6 +1,7 @@
 import React from "react"
-import regionDataStates from '../../data/map_data/all_usa_states/counties_by_state_usa_only'
-import MapDrilldown from '../../map_regions/MapDrilldown'
+import countiesByState_NcOnly from '../../data/map_data/state_nc_only/countiesByState_NcOnly'
+import MapDrilldown from '../maps/MapDrilldown'
+import {fakeFillColorFn} from '../maps/fakeColorsHelp'
 
 //----------------------/////////---------------------
 export default function MapJustState_NC(props) {
@@ -9,11 +10,12 @@ export default function MapJustState_NC(props) {
     <MapDrilldown 
       mapLevels={[
         {
-          region: regionDataStates, 
+          region: countiesByState_NcOnly, 
           picked:'NC',
-          buttonFn: (p,r,abbr)=>[`${p}`, `County, ${r}`],
-          wordFn: (p,r)=>`${p} County, ${r}`,
+          buttonTextFn: (p,r,abbr)=>[`${p}`, `County, ${r}`],
+          partWordFn: (p,r)=>`${p} County, ${r}`,
           backIcon: null,
+          fillColorOfPartFn: fakeFillColorFn,
         }
       ]}
     />

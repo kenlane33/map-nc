@@ -4,6 +4,8 @@ import regionDataCountries from '../../data/map_data/all_usa_states/states_by_co
 import MapDrilldown from '../maps/MapDrilldown'
 import UsaIcon from '../../data/UsaIcon'
 
+import {fakeFillColorFn} from '../maps/fakeColorsHelp'
+
 //----------------------/////////---------------------
 export default function MapUsaStateCounties(props) {
 
@@ -14,16 +16,18 @@ export default function MapUsaStateCounties(props) {
           region: regionDataCountries, 
           picked:'USA',
           enabledOverride: ['NC', 'SC', 'CA', 'TX', 'OH', 'WY', 'WA', 'FL', 'ND', 'CO', 'ME'],
-          buttonFn: (part,rgn,abbr)=>([`${part}`, `${(abbr && abbr[part]) || part}`]),
-          wordFn: (part,region)=>`${part}, ${region}`,
-          backIcon: null
+          buttonTextFn: (part,rgn,abbr)=>([`${part}`, `${(abbr && abbr[part]) || part}`]),
+          partWordFn: (part,region)=>`${part}, ${region}`,
+          backIcon: null,
+          fillColorOfPartFn: fakeFillColorFn,
         }, 
         {
           region: countiesByState, 
           picked:'NC',
-          buttonFn: (p,r,abbr)=>[`${p}`, `County, ${r}`],
-          wordFn: (p,r)=>`${p} County, ${r}`,
+          buttonTextFn: (p,r,abbr)=>[`${p}`, `County, ${r}`],
+          partWordFn: (p,r)=>`${p} County, ${r}`,
           backIcon: UsaIcon,
+          fillColorOfPartFn: fakeFillColorFn,
         }
       ]}
     />

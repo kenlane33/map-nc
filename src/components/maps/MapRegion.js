@@ -19,6 +19,8 @@ export default function MapRegion( props ) {
 
     enabledOverride,
     doPick,
+    fillColors,
+    fillColorOfPartFn,
     region:{
       partsByRegion, 
       propsByRegion, 
@@ -31,8 +33,8 @@ export default function MapRegion( props ) {
 
   const allPartNames = Object.values(parts).map(x=>x.name)
   const enabledParts = enabledOverride || regionProps.enabled || allPartNames // if null, allow all
-  let fillColors = {}
-  enabledParts.forEach( x=> fillColors[x]=rndScoreColor())
+  // let fillColors = {}
+  // enabledParts.forEach( x=> fillColors[x]=rndScoreColor())
 
   //----////////////--------------------------
   const doPickedPart = (nm)=> {
@@ -43,12 +45,14 @@ export default function MapRegion( props ) {
   return (
     <div>
       <MapPicker
-        parts={parts}
         key={regionName}
+
+        parts={parts}
+        regionProps={regionProps}
+        fillColorOfPartFn={fillColorOfPartFn}
         fillColors={fillColors}
         enabledParts={enabledParts}
         doPickedPart={doPickedPart}
-        regionProps={regionProps}
         partAbbreviations={partAbbreviations}
 
         regionName={regionName}
