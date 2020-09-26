@@ -15,6 +15,7 @@ export default function MapDrilldown( props ) {
     mapLevels, 
     doPickPart
   } = props
+
   const [currLevel, setCurrLevel] = useState(0)
   const [picks, setPicks] = useState(mapLevels.map(x=>x.picked))
   const [initPart, setInitPart] = useState(null)
@@ -25,7 +26,7 @@ export default function MapDrilldown( props ) {
   //----////////------------
   const pickClk = (x)=>{
     //console.log(`MapDrilldown.pickClk(${x})`)
-    if (doPickPart) doPickPart(x)
+    if (doPickPart) doPickPart(x, picks[currLevel])
 
     if (currLevel+1 >= mapLevels.length) {
       return
@@ -47,20 +48,23 @@ export default function MapDrilldown( props ) {
   
   const mapLevel = mapLevels[currLevel]
 
+  const BackBtn = (x)=> (
+    (currLevel>0) && 
+      <button 
+        className="map-drilldown-back-btn"
+        style={{display:'inline', float:'left', border:'none', background:'#ddd', borderRadius:3, padding:'3px 7px'}}
+        onClick={()=>backClk(picks[currLevel])}
+      >
+        <span style={{color:'#888'}}>{'< '}</span>
+  
+        {null || 'Back'/* TODO: fix this */}
+        {/* mapLevel.backIcon || 'Back' TODO: fix this */}
+      </button>
+  )
+
   return (
     <div>
-      { (currLevel>0) && 
-        <button 
-          className="map-drilldown-back-btn"
-          style={{display:'inline', float:'left', border:'none', background:'#ddd', borderRadius:3, padding:'3px 7px'}}
-          onClick={()=>backClk(picks[currLevel])}
-        >
-          <span style={{color:'#888'}}>{'< '}</span>
-
-          {null || 'Back'/* TODO: fix this */}
-          {/* mapLevel.backIcon || 'Back' TODO: fix this */}
-        </button>
-      }
+      <BackBtn />
       <MapRegion 
         regionName={picks[currLevel]}
         doPickPart={pickClk}

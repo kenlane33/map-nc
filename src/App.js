@@ -25,8 +25,8 @@ const fakeScores = {
 }
 
 export default function App() {
-  const doPickPart = (x) => {
-    console.log(`App ${x}`)
+  const doPickPart = (part,region) => {
+    console.log(`App.doPickPart( ${part}, ${region} )`)
   }
   return (
     <div className="App">
@@ -39,11 +39,11 @@ export default function App() {
 
       <br/><hr/><br/>
 
-      <br/><hr/><br/>
-
       <Header txt="All USA map with Drill Down Picking" />
-
+      <br/>
       <MapUsaStatesAll doPickPart={doPickPart} />
+      <br/>
+      <br/>
       <br/>
 
     </div>

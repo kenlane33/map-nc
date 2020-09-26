@@ -18,8 +18,11 @@ export default function MapUsaState_JustNC( props ) {
     'New Hanover': rndScore(),
     'Robeson':     rndScore(),
     'Wake':        rndScore(),
+    'Onslow':      rndScore(),
   }
+  const enabledPartList = Object.keys(fakeScoresForEnabled)
 
+  //----////////////------------------------------
   const fillColorFn = (partNm, enabledList) => {
     const score = fakeScoresForEnabled[partNm]
     if (score) return scoreToColor(score)
@@ -37,6 +40,7 @@ export default function MapUsaState_JustNC( props ) {
           partWordFn: (p,r)=>`${p} County, ${r}`,
           backIcon: null,
           fillColorOfPartFn: fillColorFn,
+          enabledOverride: enabledPartList,
         }
       ]}
     />
