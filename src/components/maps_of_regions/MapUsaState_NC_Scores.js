@@ -4,31 +4,24 @@ import MapDrilldown from '../maps/MapDrilldown'
 import {hashStrToGrey, scoreToColor} from './../../helpers/colorGen'
 // fakeFillColorFn = (partNm,enabledList)=>'red'
 
-const rndScore      = ()=>Math.random()
+//----------------------///////////////////---------------------
+export default function MapUsaStateNCScores( props ) {
 
-//----------------------/////////---------------------
-export default function MapUsaState_JustNC( props ) {
+  const {
+    scores,
+    doPickPart
+  } = props
 
-  // const {propsByRegion, partsByRegion} = countiesByState_NcOnly
-  const fakeScoresForEnabled = {
-    'Ashe':        rndScore(), 
-    'Buncombe':    rndScore(),
-    'Gates':       rndScore(),
-    'Mecklenburg': rndScore(),
-    'New Hanover': rndScore(),
-    'Robeson':     rndScore(),
-    'Wake':        rndScore(),
-  }
-
+  //----////////////-----------------------------
   const fillColorFn = (partNm, enabledList) => {
-    const score = fakeScoresForEnabled[partNm]
-    if (score) return scoreToColor(score)
-    else return hashStrToGrey(partNm)
+    const score = scores[partNm]
+    if (score) return scoreToColor( score )
+    else       return hashStrToGrey( partNm )
   }
-
+  ///////
   return (
-    <MapDrilldown 
-      doPickPart={props.doPickPart}
+    <MapDrilldown
+      doPickPart={doPickPart}
       mapLevels={[
         {
           region: countiesByState_NcOnly, 

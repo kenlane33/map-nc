@@ -1,12 +1,7 @@
 import React from "react"
 import MapPicker from './MapPicker'
-import {scoreToColor} from './../../helpers/colorGen'
 //import {partsByRegion, propsByRegion, regionAbbreviations} from '../data/usa_counties_by_state'
 import {getPropsByRegion} from '../../helpers/regionsParts'
-
-// import counties from './NC_svg_data'
-const rndScore      = ()=>Math.random()
-const rndScoreColor = ()=>scoreToColor( rndScore() )
 
 //----------------------/////////---------------------
 export default function MapRegion( props ) {
@@ -18,7 +13,7 @@ export default function MapRegion( props ) {
     buttonTextFn,
 
     enabledOverride,
-    doPick,
+    doPickPart,
     fillColors,
     fillColorOfPartFn,
     region:{
@@ -31,16 +26,10 @@ export default function MapRegion( props ) {
   const parts = partsByRegion[regionName]()
   const regionProps = getPropsByRegion(regionName, propsByRegion, partsByRegion)
 
-  const allPartNames = Object.values(parts).map(x=>x.name)
-  const enabledParts = enabledOverride || regionProps.enabled || allPartNames // if null, allow all
+  const allPartNames = ()=> Object.values(parts).map(x=>x.name)
+  const enabledParts = enabledOverride || regionProps.enabled || allPartNames() // if null, allow all
   // let fillColors = {}
   // enabledParts.forEach( x=> fillColors[x]=rndScoreColor())
-
-  //----////////////--------------------------
-  const doPickedPart = (nm)=> {
-    doPick(nm)
-    console.log( `MapRegion.doPickedPart( ${partWordFn(nm, regionName)} )` )
-  }
 
   return (
     <div>
@@ -52,9 +41,9 @@ export default function MapRegion( props ) {
         fillColorOfPartFn={fillColorOfPartFn}
         fillColors={fillColors}
         enabledParts={enabledParts}
-        doPickedPart={doPickedPart}
         partAbbreviations={partAbbreviations}
-
+        
+        doPickPart={doPickPart}
         regionName={regionName}
         partWordFn={partWordFn}
         initialPart={initialPart}

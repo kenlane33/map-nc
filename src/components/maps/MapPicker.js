@@ -8,7 +8,7 @@ export default function MapPicker( props ) {
   const {
     regionName, 
     enabledParts,
-    doPickedPart,
+    doPickPart,
     partWordFn,
     partAbbreviations,
     initialPart,
@@ -29,7 +29,7 @@ export default function MapPicker( props ) {
   const doClickEnabledPart = (clickedPart)=> {
     setPickedPart(clickedPart)
     setTimeout( ()=>{
-      if (doPickedPart) doPickedPart(clickedPart) // callback to parent if passed in
+      if (doPickPart) doPickPart(clickedPart) // callback to parent if passed in
       //console.log(`doClickEnabledPart(${partWordFn(clickedPart, regionName)})`)
     }, 500 )
   }

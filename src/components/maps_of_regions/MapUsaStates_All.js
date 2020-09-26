@@ -10,7 +10,8 @@ import {fakeFillColorFn} from '../maps/fakeColorsHelp'
 export default function MapUsaStateCounties(props) {
 
   return (
-    <MapDrilldown 
+    <MapDrilldown
+      doPickPart={props.doPickPart}
       mapLevels={[
         {
           region: statesByCountry,

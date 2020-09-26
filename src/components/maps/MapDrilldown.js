@@ -9,9 +9,12 @@ const modArray = ( arr, idx, val, setter ) => {
 }
 
 //----------------------/////////////---------------------
-export default function MapDrilldown(props) {
+export default function MapDrilldown( props ) {
 
-  const {mapLevels} = props
+  const {
+    mapLevels, 
+    doPickPart
+  } = props
   const [currLevel, setCurrLevel] = useState(0)
   const [picks, setPicks] = useState(mapLevels.map(x=>x.picked))
   const [initPart, setInitPart] = useState(null)
@@ -21,12 +24,18 @@ export default function MapDrilldown(props) {
 
   //----////////------------
   const pickClk = (x)=>{
-    if (currLevel+1 >= mapLevels.length) return;
+    //console.log(`MapDrilldown.pickClk(${x})`)
+    if (doPickPart) doPickPart(x)
 
-    const newI = clamp( currLevel+1, 0, mapLevels.length )
-    setCurrLevel( newI )
-    setInitPart(null)
-    modArray( picks, newI, x, setPicks )
+    if (currLevel+1 >= mapLevels.length) {
+      return
+    } else { 
+      // change map level
+      const newI = clamp( currLevel+1, 0, mapLevels.length )
+      setCurrLevel( newI )
+      setInitPart(null)
+      modArray( picks, newI, x, setPicks )
+    }
   }
   //----////////--------------
   const backClk = (priorRegion)=>{
@@ -54,11 +63,10 @@ export default function MapDrilldown(props) {
       }
       <MapRegion 
         regionName={picks[currLevel]}
-        doPick={pickClk}
+        doPickPart={pickClk}
         initialPart={initPart}
         {...mapLevel}
       />
-      <hr/>
     </div>
   )
 }
