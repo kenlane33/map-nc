@@ -13,7 +13,7 @@ const Header = (p)=>(
   </div>
 )
 
-const rndScore      = ()=>(Math.round(Math.random()*100)/100.0)
+const rndScore   = ()=>(Math.round(Math.random()*100)/100.0)
 const fakeScores = {
   'Ashe':        rndScore(), 
   'Buncombe':    rndScore(),
@@ -24,7 +24,9 @@ const fakeScores = {
   'Wake':        rndScore(),
   // 'Onslow':      rndScore(),
 }
+const fakeScoreReport = JSON.stringify(fakeScores).replace(/,/g,',  ')
 
+//----------------------////----------------------
 export default function App() {
   const doPickPart = (part,region) => {
     console.log(`App.doPickPart( ${part}, ${region} )`)
@@ -34,7 +36,7 @@ export default function App() {
 
       <Header txt="NC-only map with passed in scores" />
       <pre style={{fontSize:10, whiteSpace: 'pre-wrap'}}>
-        {JSON.stringify(fakeScores).replace(/,/g,',  ')}
+        {fakeScoreReport}
       </pre>
       <MapUsaStateNCScores scores={fakeScores} doPickPart={doPickPart} />
 
