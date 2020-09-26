@@ -9,7 +9,7 @@ const rndScore      = ()=>Math.random()
 const rndScoreColor = ()=>scoreToColor( rndScore() )
 
 //----------------------/////////---------------------
-export default function MapRegion(props) {
+export default function MapRegion( props ) {
 
   const {
     regionName, 
@@ -26,13 +26,12 @@ export default function MapRegion(props) {
   const parts = partsByRegion[regionName]()
   const regionProps = getPropsByRegion(regionName, propsByRegion, partsByRegion)
   let fillColors = {}
-  const partNames = Object.values(parts).map(x=>x.name)
-  const enabledParts = regionProps.allowed || partNames // if null, allow all
+  const allPartNames = Object.values(parts).map(x=>x.name)
+  const enabledParts = regionProps.enabled || allPartNames // if null, allow all
   enabledParts.forEach( x=> fillColors[x]=rndScoreColor())
-  // else partNames.forEach( x=> fillColors[x]=rndScoreColor())
   const doPickedPart = (nm)=> {
     doPick(nm)
-    console.log( `doPickedPart(${partWordFn(nm, regionName)})` )
+    console.log( `MapRegion.doPickedPart( ${partWordFn(nm, regionName)} )` )
   }
 
   return (
@@ -40,6 +39,7 @@ export default function MapRegion(props) {
       <MapRegionPicker
         parts={parts}
         key={regionName}
+
         regionName={regionName}
         fillColors={fillColors}
         enabledParts={enabledParts}

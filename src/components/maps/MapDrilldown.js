@@ -5,11 +5,12 @@ const modArray = ( arr, idx, val, setter ) => {
   let newPicks = [...arr]
   newPicks[idx] = val
   setter( newPicks )
-  console.log(`----[${newPicks}] --> ${newPicks[idx]}`)
+  // console.log(`----[${newPicks}] --> ${newPicks[idx]}`)
 }
 
-//----------------------/////////---------------------
+//----------------------/////////////---------------------
 export default function MapDrilldown(props) {
+
   const {mapLevels} = props
   const [currLevel, setCurrLevel] = useState(0)
   const [picks, setPicks] = useState(mapLevels.map(x=>x.picked))
@@ -18,6 +19,7 @@ export default function MapDrilldown(props) {
   
   const clamp = (v, lo, hi) => Math.max( Math.min( v, hi ), lo ) 
 
+  //----////////------------
   const pickClk = (x)=>{
     if (currLevel+1 >= mapLevels.length) return;
 
@@ -26,16 +28,16 @@ export default function MapDrilldown(props) {
     setInitPart(null)
     modArray( picks, newI, x, setPicks )
   }
-  
+  //----////////--------------
   const backClk = (priorRegion)=>{
     const newI = clamp( currLevel - 1, 0, mapLevels.length )
     setCurrLevel( newI )
-    //modArray( picks, newI, x, setPicks )
-    console.log(`priorRegion:${priorRegion}`)
+    // console.log(`priorRegion:${priorRegion}`)
     setInitPart(priorRegion)
   }
   
   const mapLevel = mapLevels[currLevel]
+
   return (
     <div>
       { (currLevel>0) && 

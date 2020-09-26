@@ -29,7 +29,7 @@ export default function MapRegionPicker( props ) {
     setPickedPart(clickedPart)
     setTimeout( ()=>{
       if (doPickedPart) doPickedPart(clickedPart) // callback to parent if passed in
-      console.log(`doClickEnabledPart(${partWordFn(clickedPart, regionName)})`)
+      //console.log(`doClickEnabledPart(${partWordFn(clickedPart, regionName)})`)
     }, 500 )
   }
 
@@ -38,6 +38,7 @@ export default function MapRegionPicker( props ) {
     if (clickOffTimeout) clearTimeout( clickOffTimeout )
     setClickOffTimeout( setTimeout( ()=>{setMsg(null)}, 2000) )
   }
+
   const partFullName = (partAbbreviations && partAbbreviations[pickedPart]) || pickedPart;
   const partWords    = (partWordFn) ? partWordFn(partFullName, regionName) : `${partFullName}, ${regionName}`
 
@@ -49,11 +50,6 @@ export default function MapRegionPicker( props ) {
       <MapRegionSvg 
         highlights={{[pickedPart]:'#33f'}}
         {...props}
-        // parts={parts} 
-        // regionName={regionName}
-        // fillColors={fillColors}
-        // enabledParts={enabledParts}
-        // regionProps={regionProps}
         doClickEnabledPart={doClickEnabledPart}
         doClickDisabledPart={doClickDisabledPart}
       />

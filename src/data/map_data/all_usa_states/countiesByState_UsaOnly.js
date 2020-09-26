@@ -3,12 +3,12 @@ export const propsByRegion = {
   "NC": {
     viewBox:"0 0 989.98 380", 
     transform:"translate(-3850 -2640) rotate(10) scale(5.8)",
-    allowed:[ 'Ashe', 'Buncombe', 'Gates', 'Mecklenburg', 'New Hanover', 'Robeson', 'Wake'],
+    enabled:[ 'Ashe', 'Buncombe', 'Gates', 'Mecklenburg', 'New Hanover', 'Robeson', 'Wake'],
   },
   "SC": {
     viewBox:"0 0 989.98 431", 
     transform:"translate(-3750 -2830) rotate(10) scale(5.8)",
-    allowed:['Aiken', 'Charleston'],
+    enabled:['Aiken', 'Charleston'],
   }
 }
 

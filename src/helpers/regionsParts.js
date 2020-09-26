@@ -7,7 +7,7 @@ export const fakeRegionProps = (regionName, propsByRegion, partsByRegion)=> {
   return ({
     viewBox:"0 0 980 600", 
     transform:"translate(0 0.1) scale(1)",
-    allowed: samplePercent( partNames, percentToSample ),
+    enabled: samplePercent( partNames, percentToSample ),
   })
 }
 //-----------///////////////---------------------
