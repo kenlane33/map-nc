@@ -12,12 +12,15 @@ export default function MapUsaStateNCScores( props ) {
     doPickPart
   } = props
 
+  const enabledOnes = Object.keys( scores )
+
   //----////////////-----------------------------
   const fillColorFn = (partNm, enabledList) => {
     const score = scores[partNm]
     if (score) return scoreToColor( score )
     else       return hashStrToGrey( partNm )
   }
+
   ///////
   return (
     <MapDrilldown
@@ -30,6 +33,7 @@ export default function MapUsaStateNCScores( props ) {
           partWordFn: (p,r)=>`${p} County, ${r}`,
           backIcon: null,
           fillColorOfPartFn: fillColorFn,
+          enabledOverride: enabledOnes,
         }
       ]}
     />
