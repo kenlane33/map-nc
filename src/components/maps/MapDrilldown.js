@@ -60,6 +60,7 @@ export default function MapDrilldown(props) {
         doPick={pickClk}
         initialPart={initPart}
         buttonFn={mapLevel.buttonFn}
+        enabledOverride={mapLevel.enabledOverride}
       />
       <hr/>
     </div>
