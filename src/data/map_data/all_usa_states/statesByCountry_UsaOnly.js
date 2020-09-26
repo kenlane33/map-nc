@@ -173,9 +173,9 @@ export const partsByRegion = {
 
 
 const regionData = {
+  partsByRegion, 
   propsByRegion, 
   regionAbbreviations, 
-  partsByRegion, 
   partAbbreviations
 } 
 // ABOVE is es6 shorthand for: 

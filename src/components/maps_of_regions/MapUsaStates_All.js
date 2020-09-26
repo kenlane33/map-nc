@@ -1,6 +1,6 @@
 import React from "react"
 import countiesByState from '../../data/map_data/all_usa_states/countiesByState_UsaOnly'
-import regionDataCountries from '../../data/map_data/all_usa_states/states_by_country_usa_only'
+import statesByCountry from '../../data/map_data/all_usa_states/statesByCountry_UsaOnly'
 import MapDrilldown from '../maps/MapDrilldown'
 import UsaIcon from '../../data/UsaIcon'
 
@@ -13,7 +13,7 @@ export default function MapUsaStateCounties(props) {
     <MapDrilldown 
       mapLevels={[
         {
-          region: regionDataCountries, 
+          region: statesByCountry,
           picked:'USA',
           enabledOverride: ['NC', 'SC', 'CA', 'TX', 'OH', 'WY', 'WA', 'FL', 'ND', 'CO', 'ME'],
           buttonTextFn: (part,rgn,abbr)=>([`${part}`, `${(abbr && abbr[part]) || part}`]),

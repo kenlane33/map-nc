@@ -1,15 +1,15 @@
 import React from "react";
 import "./styles.css";
 // import MapRegion from "./map_regions/MapRegion"
-import MapUsaStateCounties from './components/maps_of_regions/MapUsaStateCounties'
-import MapJustStateNc from './components/maps_of_regions/MapJustState_NC'
+import MapUsaStatesAll from './components/maps_of_regions/MapUsaStates_All'
+import MapUsaStateNC from './components/maps_of_regions/MapUsaState_NC'
 
 export default function App() {
   return (
     <div className="App">
-      <MapJustStateNc />
+      <MapUsaStateNC />
       <hr/>
-      <MapUsaStateCounties />
+      <MapUsaStatesAll />
     </div>
   );
 }
