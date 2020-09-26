@@ -43,9 +43,8 @@ export default function App() {
       <Header txt="All USA map with Drill Down Picking" />
       <br/>
       <MapUsaStatesAll doPickPart={doPickPart} />
-      <br/>
-      <br/>
-      <br/>
+
+      <br/><br/><br/>
 
     </div>
   );
