@@ -11,7 +11,7 @@ const modArray = ( arr, idx, val, setter ) => {
 //----------------------/////////---------------------
 export default function MapDrilldown(props) {
   const {mapLevels} = props
-  const [currLevel, setCurrLevel] = useState(1)
+  const [currLevel, setCurrLevel] = useState(0)
   const [picks, setPicks] = useState(mapLevels.map(x=>x.picked))
   const [initPart, setInitPart] = useState(null)
   //console.log(`picks ${picks} ${picks[currLevel]}`)
@@ -40,13 +40,17 @@ export default function MapDrilldown(props) {
     <div>
       { (currLevel>0) && 
         <button 
-          onClick={()=>backClk(picks[currLevel])}
+          className="map-drilldown-back-btn"
           style={{display:'inline', float:'left', border:'none', background:'#ddd', borderRadius:3, padding:'3px 7px'}}
+          onClick={()=>backClk(picks[currLevel])}
         >
-          {'<'}Back
+          <span style={{color:'#888'}}>{'< '}</span>
+
+          {null || 'Back'/* TODO: fix this */}
+          {/* mapLevel.backIcon || 'Back' TODO: fix this */}
+
         </button>
       }
-      {mapLevel.icon}
       <MapRegion 
         regionName={picks[currLevel]}
         regionData={mapLevel.region}

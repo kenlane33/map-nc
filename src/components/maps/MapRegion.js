@@ -1,8 +1,8 @@
 import React from "react"
 import MapRegionPicker from './MapRegionPicker'
-import {scoreToColor} from './../helpers/colorGen'
+import {scoreToColor} from './../../helpers/colorGen'
 //import {partsByRegion, propsByRegion, regionAbbreviations} from '../data/usa_counties_by_state'
-import {getPropsByRegion} from '../helpers/regionsParts'
+import {getPropsByRegion} from '../../helpers/regionsParts'
 
 // import counties from './NC_svg_data'
 const rndScore      = ()=>Math.random()
