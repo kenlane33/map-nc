@@ -41,9 +41,9 @@ export default function MapDrilldown(props) {
       { (currLevel>0) && 
         <button 
           onClick={()=>backClk(picks[currLevel])}
-          style={{display:'inline'}}
+          style={{display:'inline', float:'left', border:'none', background:'#ddd', borderRadius:3, padding:'3px 7px'}}
         >
-          {'<'}Back 
+          {'<'}Back
         </button>
       }
       {mapLevel.icon}
