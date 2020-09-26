@@ -32,8 +32,8 @@ export default function MapDrilldown(props) {
   const backClk = (priorRegion)=>{
     const newI = clamp( currLevel - 1, 0, mapLevels.length )
     setCurrLevel( newI )
-    // console.log(`priorRegion:${priorRegion}`)
     setInitPart(priorRegion)
+    // console.log(`priorRegion:${priorRegion}`)
   }
   
   const mapLevel = mapLevels[currLevel]
@@ -50,7 +50,6 @@ export default function MapDrilldown(props) {
 
           {null || 'Back'/* TODO: fix this */}
           {/* mapLevel.backIcon || 'Back' TODO: fix this */}
-
         </button>
       }
       <MapRegion 
@@ -58,10 +57,6 @@ export default function MapDrilldown(props) {
         doPick={pickClk}
         initialPart={initPart}
         {...mapLevel}
-        // regionData={mapLevel.region}
-        // partWordFn={mapLevel.wordFn}
-        // buttonFn={mapLevel.buttonFn}
-        // enabledOverride={mapLevel.enabledOverride}
       />
       <hr/>
     </div>
