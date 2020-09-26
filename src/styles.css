@@ -44,3 +44,10 @@
   background:#44e;
   color:white;
 }
+.map-drilldown-back-btn {
+  display:inline;
+  border:none;
+  background:#ddd;
+  border-radius:3px;
+  padding:3px 7px;
+}
