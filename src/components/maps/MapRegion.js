@@ -1,5 +1,5 @@
 import React from "react"
-import MapRegionPicker from './MapRegionPicker'
+import MapPicker from './MapPicker'
 import {scoreToColor} from './../../helpers/colorGen'
 //import {partsByRegion, propsByRegion, regionAbbreviations} from '../data/usa_counties_by_state'
 import {getPropsByRegion} from '../../helpers/regionsParts'
@@ -16,9 +16,9 @@ export default function MapRegion( props ) {
     partWordFn,
     doPick,
     initialPart,
-    buttonFn,
+    buttonTextFn,
     enabledOverride,
-    regionData:{
+    region:{
       partsByRegion, 
       propsByRegion, 
       partAbbreviations,
@@ -37,7 +37,7 @@ export default function MapRegion( props ) {
 
   return (
     <div>
-      <MapRegionPicker
+      <MapPicker
         parts={parts}
         key={regionName}
 
@@ -49,7 +49,7 @@ export default function MapRegion( props ) {
         partWordFn={partWordFn}
         partAbbreviations={partAbbreviations}
         initialPart={initialPart}
-        buttonFn={buttonFn}
+        buttonTextFn={buttonTextFn}
         />
     </div>
   )

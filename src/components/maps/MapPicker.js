@@ -4,7 +4,7 @@ import MapRegionSvg from './MapRegionSvg'
 import ButtonPicker from './ButtonPicker'
 
 //----------------------/////////----------------------
-export default function MapRegionPicker( props ) {
+export default function MapPicker( props ) {
   const {
     regionName, 
     enabledParts,
@@ -12,7 +12,7 @@ export default function MapRegionPicker( props ) {
     partWordFn,
     partAbbreviations,
     initialPart,
-    buttonFn
+    buttonTextFn
   } = props
 
   const firstPart = initialPart || ((enabledParts.length>0) ? enabledParts[enabledParts.length-1] : '')
@@ -48,8 +48,8 @@ export default function MapRegionPicker( props ) {
         {partWords}
       </div>
       <MapRegionSvg 
-        highlights={{[pickedPart]:'#33f'}}
         {...props}
+        highlights={{[pickedPart]:'#33f'}}
         doClickEnabledPart={doClickEnabledPart}
         doClickDisabledPart={doClickDisabledPart}
       />
@@ -59,7 +59,7 @@ export default function MapRegionPicker( props ) {
         picked={pickedPart}
         doClick={doClickEnabledPart}
         abbreviations={partAbbreviations}
-        buttonFn={buttonFn}
+        buttonTextFn={buttonTextFn}
       />
       {msg && <div style={{background:'pink'}}>{msg}</div>}
     </div>

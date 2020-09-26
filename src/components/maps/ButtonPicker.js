@@ -6,11 +6,11 @@ const OnePickRegionBtn = (name, props)=>{
     picked, 
     doClick,
     abbreviations,
-    buttonFn,
+    buttonTextFn,
   } = props
 
   const klass = 'pick-region-btn ' + ((name===picked) ? ' highlighted' : '')
-  const [btnTxt1, btnTxt2] = buttonFn(name, props.regionName, abbreviations)
+  const [btnTxt1, btnTxt2] = buttonTextFn(name, props.regionName, abbreviations)
   const longName = abbreviations && abbreviations[name]
   const stl = (longName) ? {}: {padding:'8px 14px'}
   return (

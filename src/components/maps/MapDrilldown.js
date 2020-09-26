@@ -55,12 +55,13 @@ export default function MapDrilldown(props) {
       }
       <MapRegion 
         regionName={picks[currLevel]}
-        regionData={mapLevel.region}
-        partWordFn={mapLevel.wordFn}
         doPick={pickClk}
         initialPart={initPart}
-        buttonFn={mapLevel.buttonFn}
-        enabledOverride={mapLevel.enabledOverride}
+        {...mapLevel}
+        // regionData={mapLevel.region}
+        // partWordFn={mapLevel.wordFn}
+        // buttonFn={mapLevel.buttonFn}
+        // enabledOverride={mapLevel.enabledOverride}
       />
       <hr/>
     </div>
