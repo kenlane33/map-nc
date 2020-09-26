@@ -20,7 +20,6 @@ export default function MapRegion(props) {
     regionData:{
       partsByRegion, 
       propsByRegion, 
-      regionAbbreviations,
       partAbbreviations,
     }
   } = props
@@ -38,7 +37,6 @@ export default function MapRegion(props) {
 
   return (
     <div>
-      {/* <span>Hello {regionAbbreviations[regionName] || regionName}</span> */}
       <MapRegionPicker
         parts={parts}
         key={regionName}

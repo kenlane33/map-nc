@@ -13,8 +13,8 @@ export default function MapUsaStateCounties(props) {
         {
           region: regionDataCountries, 
           picked:'USA',
-          wordFn: (p,r)=>`${p}, ${r}`,
-          buttonFn: (p,r,abbr)=>([`${p}`, `${(abbr && abbr[p]) || p}`]),
+          buttonFn: (part,rgn,abbr)=>([`${part}`, `${(abbr && abbr[part]) || part}`]),
+          wordFn: (part,region)=>`${part}, ${region}`,
           icon: UsaIcon
         }, 
         {
@@ -22,6 +22,7 @@ export default function MapUsaStateCounties(props) {
           picked:'NC',
           buttonFn: (p,r,abbr)=>[`${p}`, `County, ${r}`],
           wordFn: (p,r)=>`${p} County, ${r}`,
+          icon: UsaIcon,
         }
       ]}
     />
