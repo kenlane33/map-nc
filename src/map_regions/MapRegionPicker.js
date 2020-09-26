@@ -27,8 +27,10 @@ export default function MapRegionPicker( props ) {
 
   const doClickEnabledPart = (clickedPart)=> {
     setPickedPart(clickedPart)
-    console.log(`doClickEnabledPart(${partWordFn(clickedPart, regionName)})`)
-    if (doPickedPart) doPickedPart(clickedPart) // callback to parent if passed in
+    setTimeout( ()=>{
+      if (doPickedPart) doPickedPart(clickedPart) // callback to parent if passed in
+      console.log(`doClickEnabledPart(${partWordFn(clickedPart, regionName)})`)
+    }, 500 )
   }
 
   const doClickDisabledPart = (clickedPart) => {
