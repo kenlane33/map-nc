@@ -1,5 +1,5 @@
 import React from "react"
-import {hashStrToGrey} from './../../helpers/colorGen'
+// import {hashStrToGrey} from './../../helpers/colorGen'
 //import {changeLumInHslStr, hashStrToGrey, scoreToColor, stringToColor, stringToGrey} from './../helpers/colorGen'
 const el = React.createElement
 const overrideMaybe = (key, lookup, defaultVal) => {

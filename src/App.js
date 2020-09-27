@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-// import MapRegion from "./map_regions/MapRegion"
+// import Map from "./map_regions/Map"
 import MapUsaStatesAll from './components/maps_of_regions/MapUsaStates_All'
 import MapUsaStateNC from './components/maps_of_regions/MapUsaState_NC'
 import MapUsaStateNCScores from './components/maps_of_regions/MapUsaState_NC_Scores'

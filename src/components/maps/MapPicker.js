@@ -21,10 +21,11 @@ export default function MapPicker( props ) {
     }
   } = props
 
-  // Select parts
+  // Select properties & parts from region dataset
   const parts = partsByRegion[regionName]()
   const regionProps = getPropsByRegion(regionName, propsByRegion, partsByRegion)
 
+  // Which parts are enabled? Parent says? Region data says? All parts if null?
   const allPartNames = ()=> Object.values(parts).map(x=>x.name)
   const enabledParts = enabledOverride || regionProps.enabled || allPartNames() // if null, allow all
 
@@ -36,6 +37,7 @@ export default function MapPicker( props ) {
     //console.log(`initialPart:${initialPart}, firstPart:${firstPart}, pickedPart:${pickedPart}`)
   },[])
 
+  // 
   const [msg, setMsg] = useState(null)
   const [clickOffTimeout, setClickOffTimeout] = useState(null)
 

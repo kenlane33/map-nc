@@ -1,13 +1,15 @@
 import React, {useState} from "react"
-// import MapRegion from './MapRegion'
 import MapPicker from './MapPicker'
 
+//----/////////------------------------------------
 const modArray = ( arr, idx, val, setter ) => {
   let newPicks = [...arr]
   newPicks[idx] = val
   setter( newPicks )
   // console.log(`----[${newPicks}] --> ${newPicks[idx]}`)
 }
+
+const clamp = (v, lo, hi) => Math.max( Math.min( v, hi ), lo ) 
 
 //----------------------/////////////---------------------
 export default function MapDrilldown( props ) {
@@ -17,12 +19,12 @@ export default function MapDrilldown( props ) {
     doPickPart
   } = props
 
+  // useState hooks
   const [currLevel, setCurrLevel] = useState(0)
   const [picks, setPicks] = useState(mapLevels.map(x=>x.picked))
   const [initPart, setInitPart] = useState(null)
   //console.log(`picks ${picks} ${picks[currLevel]}`)
   
-  const clamp = (v, lo, hi) => Math.max( Math.min( v, hi ), lo ) 
 
   //----////////------------
   const pickClk = (x)=>{
@@ -49,6 +51,7 @@ export default function MapDrilldown( props ) {
   
   const mapLevel = mapLevels[currLevel]
 
+  //----////////-----------------------
   const BackBtn = (x)=> (
     (currLevel>0) && 
       <button 
