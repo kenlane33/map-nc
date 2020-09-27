@@ -39,14 +39,16 @@ export default function App() {
         {fakeScoreReport}
       </pre>
       <MapUsaStateNCScores scores={fakeScores} doPickPart={doPickPart} />
+      <Header txt="NC-only map no scores" />
+      <MapUsaStateNC scores={fakeScores} doPickPart={doPickPart} />
 
       <br/><hr/><br/>
 
-      <Header txt="All USA map with Drill Down Picking" />
+      {/* <Header txt="All USA map with Drill Down Picking" />
       <br/>
       <MapUsaStatesAll doPickPart={doPickPart} />
 
-      <br/><br/><br/>
+      <br/><br/><br/> */}
 
     </div>
   );

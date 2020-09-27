@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 // import {changeLumInHslStr, hashStrToGrey, scoreToColor, stringToColor, stringToGrey} from './../helpers/colorGen'
-import MapRegionSvg from './MapRegionSvg'
+import MapSvg from './MapSvg'
 import ButtonPicker from './ButtonPicker'
 import {getPropsByRegion} from '../../helpers/regionsParts'
 
@@ -60,10 +60,12 @@ export default function MapPicker( props ) {
 
   return (
     <div>
+
       <div className="clickable-state-map-county-label">
         {partWords}
       </div>
-      <MapRegionSvg 
+
+      <MapSvg 
         {...props}
 
         parts={parts}
@@ -75,6 +77,9 @@ export default function MapPicker( props ) {
         doClickEnabledPart={doClickEnabledPart}
         doClickDisabledPart={doClickDisabledPart}
       />
+
+      {msg && <div style={{background:'pink'}}>{msg}</div>}
+
       <ButtonPicker
         regionName={regionName}
         enabledParts={enabledParts}
@@ -83,7 +88,7 @@ export default function MapPicker( props ) {
         abbreviations={partAbbreviations}
         buttonTextFn={buttonTextFn}
       />
-      {msg && <div style={{background:'pink'}}>{msg}</div>}
+
     </div>
   )
 }
