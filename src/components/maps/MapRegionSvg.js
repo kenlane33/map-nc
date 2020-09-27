@@ -11,12 +11,14 @@ const renderOnePart = (part, props, i) => {
     highlights,
     fillColorOfPartFn,
     enabledParts,
+    partAbbreviations,
     doClickEnabledPart,
     doClickDisabledPart, 
     regionName='<State>', // default value <State>
     regionProps
   } = props
-  const displayNm = part.name + ', ' + regionName
+  const partNm = (partAbbreviations && partAbbreviations[part.name] && `${partAbbreviations[part.name]} (${part.name})`) || part.name
+  const displayNm = `${partNm}, ${regionName}`
 
   // Fill & stroke Colors for a county
   const partCol = fillColorOfPartFn(part.name,enabledParts)//hashStrToGrey(part.name)
