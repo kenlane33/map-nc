@@ -1,6 +1,5 @@
 import React from "react"
 import countiesByState_NcOnly from '../../data/map_data/state_nc_only/countiesByState_NcOnly'
-import MapDrilldown from '../maps/MapDrilldown'
 import MapPicker from '../maps/MapPicker'
 import {hashStrToGrey, scoreToColor} from './../../helpers/colorGen'
 // fakeFillColorFn = (partNm,enabledList)=>'red'
