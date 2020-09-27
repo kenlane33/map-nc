@@ -24,8 +24,8 @@ const fakeScores = {
   'Wake':        rndScore(),
   // 'Onslow':      rndScore(),
 }
-const fakeScoreReport = JSON.stringify(fakeScores).replace(/,/g,',  ')
-
+const fakeScoreTxt = JSON.stringify(fakeScores).replace(/,/g,',  ')
+const howTo = `<MapUsaStateNCScores \n  scores={\n    ${fakeScoreTxt}\n  }\n/>`
 //----------------------////----------------------
 export default function App() {
   const doPickPart = (part,region) => {
@@ -35,8 +35,8 @@ export default function App() {
     <div className="App">
 
       <Header txt='NC-only map with passed in scores' />
-      <pre style={{fontSize:10, whiteSpace: 'pre-wrap'}}>
-        {fakeScoreReport}
+      <pre style={{fontSize:10, whiteSpace: 'pre-wrap', textAlign:'left'}}>
+        {howTo}
       </pre>
       <MapUsaStateNCScores scores={fakeScores} doPickPart={doPickPart} />
       <br/><hr/><br/>
