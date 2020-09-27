@@ -72,6 +72,7 @@ export default function MapDrilldown( props ) {
         regionName={picks[currLevel]}
         doPickPart={pickClk}
         initialPart={initPart}
+        clickDelay={500}
         {...mapLevel}
       />
     </div>

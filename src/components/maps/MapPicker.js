@@ -14,6 +14,7 @@ export default function MapPicker( props ) {
     buttonTextFn,
     fillColorOfPartFn,
     enabledOverride,
+    clickDelay=0,
     region:{
       partsByRegion, 
       propsByRegion, 
@@ -44,9 +45,9 @@ export default function MapPicker( props ) {
   const doClickEnabledPart = (clickedPart)=> {
     setPickedPart(clickedPart)
     setTimeout( ()=>{
-      if (doPickPart) doPickPart(clickedPart) // callback to parent if passed in
+      if (doPickPart) doPickPart(clickedPart, regionName) // callback to parent if passed in
       //console.log(`doClickEnabledPart(${partWordFn(clickedPart, regionName)})`)
-    }, 500 )
+    }, clickDelay )
   }
 
   const doClickDisabledPart = (clickedPart) => {

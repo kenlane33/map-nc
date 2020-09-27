@@ -34,7 +34,7 @@ export default function App() {
   return (
     <div className="App">
 
-      <Header txt="NC-only map with passed in scores" />
+      <Header txt='NC-only map with passed in scores' />
       <pre style={{fontSize:10, whiteSpace: 'pre-wrap'}}>
         {fakeScoreReport}
       </pre>
@@ -42,12 +42,12 @@ export default function App() {
       <br/><hr/><br/>
 
 
-      <Header txt="All USA map with Drill Down Picking" />
+      <Header txt='US Map with State & County Drill-Down Picking' />
       <br/>
       <MapUsaStatesAll doPickPart={doPickPart} />
       <br/><br/><br/>
 
-      <Header txt="Three ways to make a map, <Map/> <MapPicker/> <MapDrilldown/>" />
+      <Header txt='Three ways to make a map: <Map/> <MapPicker/> <MapDrilldown/>' />
       <MapUsaStateNC scores={fakeScores} doPickPart={doPickPart} />
       <br/><hr/><br/>
 
