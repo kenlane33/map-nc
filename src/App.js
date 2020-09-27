@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 // import Map from "./map_regions/Map"
 import MapUsaStatesAll from './components/maps_of_regions/MapUsaStates_All'
-import MapUsaStateNC from './components/maps_of_regions/MapUsaState_NC'
+import MapUsaStateNCDemo from './components/maps_of_regions/MapUsaState_NC_Demo'
 import MapUsaStateNCScores from './components/maps_of_regions/MapUsaState_NC_Scores'
 
 const Header = (p)=>(
@@ -48,7 +48,7 @@ export default function App() {
       <br/><br/><br/>
 
       <Header txt='Three ways to make a map: <Map/> <MapPicker/> <MapDrilldown/>' />
-      <MapUsaStateNC scores={fakeScores} doPickPart={doPickPart} />
+      <MapUsaStateNCDemo scores={fakeScores} doPickPart={doPickPart} />
       <br/><hr/><br/>
 
     </div>
