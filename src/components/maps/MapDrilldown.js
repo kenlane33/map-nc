@@ -52,7 +52,6 @@ export default function MapDrilldown( props ) {
     (currLevel>0) && 
       <button 
         className="map-drilldown-back-btn"
-        style={{display:'inline', float:'left', border:'none', background:'#ddd', borderRadius:3, padding:'3px 7px'}}
         onClick={()=>backClk(picks[currLevel])}
       >
         <span style={{color:'#888'}}>{'< '}</span>

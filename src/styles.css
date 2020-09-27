@@ -7,22 +7,23 @@
   text-align: center;
 }
 
+/* *********************************** */
 .map-part-border {
   stroke-width:'.17829';
   stroke: black;
 }
-
 .map-part-border:hover {
   cursor: pointer;
   stroke: black;
   stroke-width: 2;
   z-index: 6000;
 }
+/* *********************************** */
 
 .pick-region-div {
   text-align: center;
 }
-
+/* *********************************** */
 .pick-region-btn {
   margin:6px;
   line-height: 1.0; 
@@ -33,6 +34,11 @@
   background: #eee;
   display:inline-block;
 }
+.pick-region-btn.highlighted {
+  background:#44e;
+  color:white;
+}
+/* *********************************** */
 .pick-region-btn-long-name {
   font-size: 8px;
   color: #555;
@@ -40,13 +46,19 @@
 .highlighted .pick-region-btn-long-name {
   color: #fff;
 }
-.pick-region-btn.highlighted {
-  background:#44e;
-  color:white;
+/* *********************************** */
+
+
+/* *********************************** */
+.map-drilldown-back-btn:hover {
+  border: black solid 1px;
 }
 .map-drilldown-back-btn {
+  cursor: pointer;
+  float:left;
   display:inline;
   border:none;
+  border: #ddd solid 1px;
   background:#ddd;
   border-radius:3px;
   padding:3px 7px;
