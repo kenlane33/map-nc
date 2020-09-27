@@ -28,8 +28,8 @@ export default function MapUsaStateNCScores( props ) {
     buttonTextFn: (p,r,abbr)=>[`${p}`, `County, ${r}`],
     partWordFn: (p,r)=>`${p} County, ${r}`,
     backIcon: null,
-    fillColorOfPartFn: fillColorFn,
     enabledOverride: enabledOnes,
+    fillColorOfPartFn: fillColorFn,
   }
 
   ///////
