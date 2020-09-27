@@ -40,16 +40,16 @@ export default function App() {
       </pre>
       <MapUsaStateNCScores scores={fakeScores} doPickPart={doPickPart} />
       <br/><hr/><br/>
-      <Header txt="Three ways to make a map, <Map/> <MapPicker/> <MapDrilldown/>" />
-      <MapUsaStateNC scores={fakeScores} doPickPart={doPickPart} />
 
-      <br/><hr/><br/>
 
       <Header txt="All USA map with Drill Down Picking" />
       <br/>
       <MapUsaStatesAll doPickPart={doPickPart} />
-
       <br/><br/><br/>
+
+      <Header txt="Three ways to make a map, <Map/> <MapPicker/> <MapDrilldown/>" />
+      <MapUsaStateNC scores={fakeScores} doPickPart={doPickPart} />
+      <br/><hr/><br/>
 
     </div>
   );

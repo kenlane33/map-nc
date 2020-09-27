@@ -44,17 +44,28 @@ export default function MapUsaState_JustNC( props ) {
 
   return (
     <div>
+
       <pre>{'<Map/>'}</pre>
-      <Map       {...ncAsMapLevel} regionName={'NC'} />
+      <Map
+        {...ncAsMapLevel} 
+        regionName={'NC'} 
+      />
       <hr/>
+
       <pre>{'<MapPicker/>'}</pre>
-      <MapPicker {...ncAsMapLevel} regionName={'NC'} doPickPart={props.doPickPart} />
+      <MapPicker 
+        {...ncAsMapLevel} 
+        regionName={'NC'} 
+        doPickPart={props.doPickPart} 
+      />
       <hr/>
-      <pre>{'<MapDrilldown/>'}</pre>
+
+      <pre>{'<MapDrilldown/> (with just NC here)'}</pre>
       <MapDrilldown 
         doPickPart={props.doPickPart}
         mapLevels={ [ ncAsMapLevel ] }
       />
+      
     </div>
   )
 
