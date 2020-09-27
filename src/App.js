@@ -24,7 +24,7 @@ const fakeScores = {
   'Wake':        rndScore(),
   // 'Onslow':      rndScore(),
 }
-const fakeScoreTxt = JSON.stringify(fakeScores).replace(/,/g,',  ')
+const fakeScoreTxt = JSON.stringify(fakeScores).replace(/,/g,',\n     ')
 const howTo = `<MapUsaStateNCScores \n  scores={\n    ${fakeScoreTxt}\n  }\n/>`
 //----------------------////----------------------
 export default function App() {
