@@ -20,18 +20,16 @@ const renderOnePart = (part, props, i) => {
   const partNm = (partAbbreviations && partAbbreviations[part.name] && `${partAbbreviations[part.name]} (${part.name})`) || part.name
   const displayNm = `${partNm}, ${regionName}`
 
-  // Fill & stroke Colors for a county
-  const partCol = fillColorOfPartFn(part.name,enabledParts)//hashStrToGrey(part.name)
-  // const fillCol = overrideMaybe( part.name, fillColors, partCol )//( Object.keys(countyScores).includes( x.name ) ) ? countyScores[x.name] : countyColor
+  // Fill & stroke Colors for a part
+  const partCol = fillColorOfPartFn(part.name,enabledParts)
   const strokeCol = overrideMaybe( part.name, highlights, null )
-  //const strokeWidth = (strokeCol==='black') ? '' : '1.4'
-  const osw = regionProps.highlightStrokeWidth && regionProps.highlightStrokeWidth
-  const strokeWidth = (strokeCol) ? (osw||'1.4') : ''
+  const sw = regionProps.highlightStrokeWidth
+  const strokeWidth = (strokeCol) ? (sw||'1.4') : ''
   const stlC = {fill:partCol, stroke:strokeCol, strokeWidth: strokeWidth}
 
   // Do the right kind of clicks
-  const isAllowedCounty = (enabledParts.includes(part.name))
-  const clk = isAllowedCounty ? 
+  const isEnabledPart = (enabledParts.includes(part.name))
+  const clk = isEnabledPart ? 
                 ()=>{doClickEnabledPart(part.name) }  : 
                 ()=>{doClickDisabledPart(part.name)}
   const elAttrs = {
