@@ -1,5 +1,6 @@
 import React, {useState} from "react"
-import MapRegion from './MapRegion'
+// import MapRegion from './MapRegion'
+import MapPicker from './MapPicker'
 
 const modArray = ( arr, idx, val, setter ) => {
   let newPicks = [...arr]
@@ -64,7 +65,7 @@ export default function MapDrilldown( props ) {
   return (
     <div>
       <BackBtn />
-      <MapRegion 
+      <MapPicker 
         regionName={picks[currLevel]}
         doPickPart={pickClk}
         initialPart={initPart}

@@ -2,20 +2,33 @@ import React, {useState, useEffect} from "react"
 // import {changeLumInHslStr, hashStrToGrey, scoreToColor, stringToColor, stringToGrey} from './../helpers/colorGen'
 import MapRegionSvg from './MapRegionSvg'
 import ButtonPicker from './ButtonPicker'
+import {getPropsByRegion} from '../../helpers/regionsParts'
 
 //----------------------/////////----------------------
 export default function MapPicker( props ) {
   const {
     regionName, 
-    enabledParts,
     doPickPart,
     partWordFn,
-    partAbbreviations,
     initialPart,
     buttonTextFn,
-    fillColorOfPartFn
+    fillColorOfPartFn,
+    enabledOverride,
+    region:{
+      partsByRegion, 
+      propsByRegion, 
+      partAbbreviations,
+    }
   } = props
 
+  // Select parts
+  const parts = partsByRegion[regionName]()
+  const regionProps = getPropsByRegion(regionName, propsByRegion, partsByRegion)
+
+  const allPartNames = ()=> Object.values(parts).map(x=>x.name)
+  const enabledParts = enabledOverride || regionProps.enabled || allPartNames() // if null, allow all
+
+  // Which part is initially picked?
   const firstPart = initialPart || ((enabledParts.length>0) ? enabledParts[enabledParts.length-1] : '')
   const [pickedPart, setPickedPart] = useState(firstPart)
   useEffect(()=>{ // runs once on init
@@ -50,6 +63,11 @@ export default function MapPicker( props ) {
       </div>
       <MapRegionSvg 
         {...props}
+
+        parts={parts}
+        regionProps={regionProps}
+        enabledParts={enabledParts}
+
         highlights={{[pickedPart]:'#33f'}}
         fillColorOfPartFn={fillColorOfPartFn}
         doClickEnabledPart={doClickEnabledPart}

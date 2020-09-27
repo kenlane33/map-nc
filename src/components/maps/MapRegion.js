@@ -1,7 +1,7 @@
 import React from "react"
 import MapPicker from './MapPicker'
 //import {partsByRegion, propsByRegion, regionAbbreviations} from '../data/usa_counties_by_state'
-import {getPropsByRegion} from '../../helpers/regionsParts'
+// import {getPropsByRegion} from '../../helpers/regionsParts'
 
 //----------------------/////////---------------------
 export default function MapRegion( props ) {
@@ -16,38 +16,37 @@ export default function MapRegion( props ) {
     doPickPart,
     fillColors,
     fillColorOfPartFn,
-    region:{
-      partsByRegion, 
-      propsByRegion, 
-      partAbbreviations,
-    }
+    region,
   } = props
 
-  const parts = partsByRegion[regionName]()
-  const regionProps = getPropsByRegion(regionName, propsByRegion, partsByRegion)
+  // const parts = partsByRegion[regionName]()
+  // const regionProps = getPropsByRegion(regionName, propsByRegion, partsByRegion)
 
-  const allPartNames = ()=> Object.values(parts).map(x=>x.name)
-  const enabledParts = enabledOverride || regionProps.enabled || allPartNames() // if null, allow all
-  // let fillColors = {}
-  // enabledParts.forEach( x=> fillColors[x]=rndScoreColor())
+  // const allPartNames = ()=> Object.values(parts).map(x=>x.name)
+  // const enabledParts = enabledOverride || regionProps.enabled || allPartNames() // if null, allow all
 
   return (
     <div>
       <MapPicker
-        key={regionName}
+        key={props.regionName}
 
-        parts={parts}
-        regionProps={regionProps}
-        fillColorOfPartFn={fillColorOfPartFn}
-        fillColors={fillColors}
-        enabledParts={enabledParts}
-        partAbbreviations={partAbbreviations}
+        {...props}
+
+        // region={region}
+        // fillColorOfPartFn={fillColorOfPartFn}
+        // fillColors={fillColors}
+        // enabledOverride={enabledOverride}
         
-        doPickPart={doPickPart}
-        regionName={regionName}
-        partWordFn={partWordFn}
-        initialPart={initialPart}
-        buttonTextFn={buttonTextFn}
+        // doPickPart={doPickPart}
+        // regionName={regionName}
+        // partWordFn={partWordFn}
+        // initialPart={initialPart}
+        // buttonTextFn={buttonTextFn}
+
+        // parts={parts}
+        // regionProps={regionProps}
+        // enabledParts={enabledParts}
+        // partAbbreviations={partAbbreviations}
         />
     </div>
   )
