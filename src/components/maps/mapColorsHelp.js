@@ -1,3 +1,18 @@
+//import {scoreToColor, hashStrToGrey} from './../../helpers/colorGen'
+
+
+//-----------////////////////--------------------------
+export const fakeFillColorFn = (partNm,enabledList) => {
+
+  const rndScore      = ()=>Math.random()
+  const rndScoreColor = ()=>scoreToColor( rndScore() )
+  
+  const inList = (enabledList.includes(partNm))
+  return(
+    (inList) ? rndScoreColor() : hashStrToGrey(partNm) 
+  )
+}
+
 
 export const scoreToColor = (score, sat=100, lum=50, start=0, end=150) => {
   if ( (score > 1.0) || (score < 0.0) )

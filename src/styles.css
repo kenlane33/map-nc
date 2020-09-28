@@ -66,3 +66,8 @@
   border-radius:3px;
   padding:3px 7px;
 }
+
+.map-picker-msg {
+  background:pink;
+  padding: 6px;
+}

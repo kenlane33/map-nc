@@ -24,8 +24,10 @@ const fakeScores = {
   'Wake':        rndScore(),
   // 'Onslow':      rndScore(),
 }
+
 const fakeScoreTxt = JSON.stringify(fakeScores).replace(/,/g,',\n     ').replace(/:/g,':  ')
 const howTo = `<MapUsaStateNCScores \n  scores={\n    ${fakeScoreTxt}\n  }\n/>`
+
 //----------------------////----------------------
 export default function App() {
   const doPickPart = (part,region) => {

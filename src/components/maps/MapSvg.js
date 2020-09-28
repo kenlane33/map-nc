@@ -15,7 +15,8 @@ const renderOnePart = (part, props, i) => {
     doClickEnabledPart,
     doClickDisabledPart, 
     regionName='<State>', // default value <State>
-    regionProps
+    regionProps,
+    blockClicks=false,
   } = props
   const partNm = (partAbbreviations && partAbbreviations[part.name] && `${partAbbreviations[part.name]} (${part.name})`) || part.name
   const displayNm = `${partNm}, ${regionName}`
@@ -46,7 +47,7 @@ const renderOnePart = (part, props, i) => {
   else
   return (
        <path
-         className='svg-path map-part-border'
+         className={`svg-path map-part-border ${blockClicks && 'block-hover'}`}
          key={part.id + i}
          id={part.id}
          d={part.d}

@@ -12,7 +12,7 @@ export default function MapPicker( props ) {
     partWordFn,
     initialPart,
     buttonTextFn,
-    fillColorOfPartFn,
+    // fillColorOfPartFn,
     enabledOverride,
     clickDelay=0,
     region:{
@@ -53,7 +53,7 @@ export default function MapPicker( props ) {
   const doClickDisabledPart = (clickedPart) => {
     setMsg( `Data for ${clickedPart}, ${regionName} is not available just yet`)
     if (clickOffTimeout) clearTimeout( clickOffTimeout )
-    setClickOffTimeout( setTimeout( ()=>{setMsg(null)}, 2000) )
+    setClickOffTimeout( setTimeout( ()=>{setMsg(null)}, 5000) )
   }
 
   const partFullName = (partAbbreviations && partAbbreviations[pickedPart]) || pickedPart;
@@ -74,12 +74,16 @@ export default function MapPicker( props ) {
         enabledParts={enabledParts}
 
         highlights={{[pickedPart]:'#33f'}}
-        fillColorOfPartFn={fillColorOfPartFn}
+        // fillColorOfPartFn={fillColorOfPartFn}
         doClickEnabledPart={doClickEnabledPart}
         doClickDisabledPart={doClickDisabledPart}
       />
 
-      {msg && <div style={{background:'pink'}}>{msg}</div>}
+      {msg && 
+        <div className="map-picker-msg">
+          {msg}
+        </div>
+      }
 
       <ButtonPicker
         regionName={regionName}

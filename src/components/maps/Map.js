@@ -39,6 +39,7 @@ export default function Map( props ) {
       doClickDisabledPart={doPickHere}
       highlights={{}}
       enabledParts={[]}
+      blockClicks={true}
     />
 
   )
