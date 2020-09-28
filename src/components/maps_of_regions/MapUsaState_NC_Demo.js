@@ -3,7 +3,7 @@ import countiesByState_NcOnly from '../../data/map_data/state_nc_only/countiesBy
 import MapDrilldown from '../maps/MapDrilldown'
 import MapPicker from '../maps/MapPicker'
 import Map from '../maps/Map'
-import {hashStrToGrey, scoreToColor} from './../../helpers/colorGen'
+import {hashStrToGrey, scoreToColor} from '../maps/mapColorsHelp'
 // fakeFillColorFn = (partNm,enabledList)=>'red'
 
 const rndScore      = ()=>Math.random()

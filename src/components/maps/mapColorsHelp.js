@@ -3,17 +3,18 @@
 
 //-----------////////////////--------------------------
 export const fakeFillColorFn = (partNm,enabledList) => {
-
+  
   const rndScore      = ()=>Math.random()
   const rndScoreColor = ()=>scoreToColor( rndScore() )
   
   const inList = (enabledList.includes(partNm))
   return(
     (inList) ? rndScoreColor() : hashStrToGrey(partNm) 
-  )
-}
-
-
+    )
+  }
+  
+  
+//-----------////////////////--------------------------
 export const scoreToColor = (score, sat=100, lum=50, start=0, end=150) => {
   if ( (score > 1.0) || (score < 0.0) )
   {
@@ -24,10 +25,12 @@ export const scoreToColor = (score, sat=100, lum=50, start=0, end=150) => {
   return 'hsl(' + hue + ','+sat+'%,'+lum+'%)';
 }
 
+//-----------//////////////--------------------------
 export const hashStrToGrey = (s) => {
   return scoreToGrey( (hashStrToScore(s) * 0.2 ) +.4 ) 
 }
 
+//-----------////////////--------------------------
 export const scoreToGrey = (score, start=0, end=150) => {
   if ( (score > 1.0) || (score < 0.0) )
   {
@@ -38,6 +41,7 @@ export const scoreToGrey = (score, start=0, end=150) => {
   return 'hsl(' + 0 + ','+0+'%,'+lum+'%)';
 }
 
+//-----------///////////////--------------------------
 export const hashStrToScore = (s) => {
   var hash = 0, i;
   const maxInt = (Math.pow(2,32)-1)//
@@ -50,6 +54,7 @@ export const hashStrToScore = (s) => {
   return ret;
 }
 
+//-----------//////////////--------------------------
 export const stringToColor = (str) => {
   var hash = 0;
   for (var i = 0; i < str.length; i++) {
@@ -63,6 +68,7 @@ export const stringToColor = (str) => {
   return color;
 }
 
+//-----------/////////////--------------------------
 export const stringToGrey = (str) => {
   var hash = 0;
   for (var i = 0; i < str.length; i++) {

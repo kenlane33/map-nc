@@ -4,7 +4,7 @@ import statesByCountry from '../../data/map_data/all_usa_states/statesByCountry_
 import MapDrilldown from '../maps/MapDrilldown'
 import UsaIcon from '../../data/UsaIcon'
 
-import {fakeFillColorFn} from '../maps/fakeColorsHelp'
+import {fakeFillColorFn} from '../maps/mapColorsHelp'
 
 //----------------------/////////---------------------
 export default function MapUsaStateCounties(props) {
