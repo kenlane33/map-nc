@@ -9,6 +9,11 @@ export const propsByRegion = {
     viewBox:"0 0 989.98 431", 
     transform:"translate(-3750 -2830) rotate(10) scale(5.8)",
     enabled:['Aiken', 'Charleston'],
+  },
+  "WA": {
+    viewBox:"0 0 550 360", 
+    transform:"translate(-350 100) rotate(-10) scale(4.3)",
+    enabled:["Clallam", "Cowlitz", "Garfield", "Columbia", "Walla Walla", "Franklin", "Spokane", "Pend Oreille", "Stevens", "Lincoln", "Grant", "Benton", "Thurston", "Pierce"]
   }
 }
 
