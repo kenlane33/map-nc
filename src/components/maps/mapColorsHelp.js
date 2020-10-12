@@ -8,10 +8,9 @@ export const fakeFillColorFn = (partNm,enabledList) => {
   const rndScoreColor = ()=>scoreToColor( rndScore() )
   
   const inList = (enabledList.includes(partNm))
-  return(
-    (inList) ? rndScoreColor() : hashStrToGrey(partNm) 
-    )
-  }
+  
+  return (inList) ? rndScoreColor() : hashStrToGrey(partNm)
+}
   
   
 //-----------////////////////--------------------------

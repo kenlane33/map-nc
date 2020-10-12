@@ -16,7 +16,7 @@ export default function MapUsaStateCounties(props) {
         {
           region: statesByCountry,
           picked:'USA',
-          enabledOverride: ['NC', 'SC', 'VA', 'CA', 'TX', 'OH', 'WA', 'FL', 'ND', 'CO', 'ME'].sort(),
+          enabledOverride: ['CT', 'NC', 'SC', 'VA', 'CA', 'TX', 'OH', 'WA', 'FL', 'ND', 'CO', 'ME'].sort(),
           buttonTextFn: (part,rgn,abbr)=>([`${part}`, `${(abbr && abbr[part]) || part}`]),
           partWordFn: (part,region)=>`${part}, ${region}`,
           backIcon: null,

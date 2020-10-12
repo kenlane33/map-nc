@@ -14,7 +14,15 @@ export const propsByRegion = {
     viewBox:"0 0 550 360", 
     transform:"translate(-350 100) rotate(-10) scale(4.3)",
     enabled:["Clallam", "Cowlitz", "Garfield", "Columbia", "Walla Walla", "Franklin", "Spokane", "Pend Oreille", "Stevens", "Lincoln", "Grant", "Benton", "Thurston", "Pierce"]
-  }
+  },
+  "CT": {
+    viewBox:"0 0 313 239", 
+    transform:"translate(-7861 -3490) rotate(13) scale(9.4)",
+    enabled: [
+      //"Middlesex", "Tolland", "Litchfield", 
+      "Fairfield", "New Haven", "New London", "Windham", "Hartford", 
+    ]
+  },
 }
 
 //-----------////////////////////---------------------
