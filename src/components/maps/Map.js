@@ -19,7 +19,7 @@ export default function Map( props ) {
 
   // Select properties & parts from region dataset
   const regionProps = getPropsByRegion(regionName, propsByRegion, partsByRegion)
-  const parts = partsByRegion[regionName]()
+  const parts = partsByRegion(regionName)
 
   //----///////////-----------------
   const doPickHere = (p,r)=>{

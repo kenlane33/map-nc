@@ -23,7 +23,7 @@ export default function MapPicker( props ) {
   } = props
 
   // Select properties & parts from region dataset
-  const parts = partsByRegion[regionName]()
+  const parts = partsByRegion(regionName)
   const regionProps = getPropsByRegion(regionName, propsByRegion, partsByRegion)
 
   // Which parts are enabled? Parent says? Region data says? All parts if null?

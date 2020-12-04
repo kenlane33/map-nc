@@ -2,7 +2,7 @@ import {samplePercent} from './arrayHelp'
 
 //-----------///////////////---------------------
 export const fakeRegionProps = (regionName, propsByRegion, partsByRegion)=> {
-  const partNames = partsByRegion[regionName]().map(x=>x.name)
+  const partNames = partsByRegion(regionName).map(x=>x.name)
   const percentToSample = ((Math.random()*0.1) + 0.1) // 10% to 20%
   return ({
     viewBox:"0 0 980 600", 
